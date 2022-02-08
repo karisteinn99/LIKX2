@@ -1,2 +1,4 @@
 import math
 
+print("Hello")
+
