@@ -4,3 +4,6 @@ class logic_wrapper:
 
     def add_2(self):
         return self+2
+
+    def print_hello(self):
+        print('hello')
