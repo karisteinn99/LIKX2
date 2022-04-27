@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'test2.urls'
+ROOT_URLCONF = 'test_karitas.urls'
 
 TEMPLATES = [
     {
@@ -68,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'test2.wsgi.application'
+WSGI_APPLICATION = 'test_karitas.wsgi.application'
 
 
 # Database
