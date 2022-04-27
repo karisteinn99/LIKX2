@@ -68,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'test2.wsgi.application'
+WSGI_APPLICATION = 'test_karitas.wsgi.application'
 
 
 # Database

@@ -1,15 +1,18 @@
 ------------- SKOÐA TÖFLUR:
-select * -- sjá allar joinaðar í eina töflu
+----áfangar,önn:
+select * from courseselect_course C join courseselect_coursesemester S on (S."courseID_id") = C.ID
+----áfangaID, áfanganafn, undanfara_id, undanfaranafn
+select C1.ID,C1.name as course_name, P."toID_id" as prerequisite_courseID, C2.name as prerequisite_course_name
 from courseselect_coursehasprerequisite P
-join courseselect_course C on C.ID = P.ID
-join courseselect_coursesemester S on P.ID = S.ID
+join courseselect_course C1 on C1.ID = P."fromID_id"
+join courseselect_course C2 on C2.ID = P."toID_id"
 
 select * from courseselect_course -- sjá course töfluna
 select * from courseselect_coursehasprerequisite -- sjá coursehasprerequisite töfluna
 select * from courseselect_coursesemester -- sjá coursesemester töfluna
 
-select C.ID from courseselect_course C where C.name = 'Stærðfræði II'
-select C.name from courseselect_course C where C.ID = 2
+select C.ID from courseselect_course C where C.name = 'Línuleg algebra'
+select C.name from courseselect_course C where C.ID = 1
 
 
 -------------- DELETE:
@@ -22,10 +25,14 @@ INSERT INTO courseselect_course(name, ects) values('Stærðfræði II', 6)
 INSERT INTO courseselect_course(name, ects) values('Línuleg algebra', 6)
 
 -- CourseHasPrerequisite
-INSERT INTO courseselect_coursehasprerequisite(fromID_id, toID_id) values(5,6) -- fæ villu hér að þessir dálkar séu ekki til
-INSERT INTO courseselect_coursehasprerequisite(fromID_id, toID_id) values('5','4')
+INSERT INTO courseselect_coursehasprerequisite ("fromID_id", "toID_id") values(7,1) 
+INSERT INTO courseselect_coursehasprerequisite("fromID_id", "toID_id") values(7,8)
+INSERT INTO courseselect_coursehasprerequisite("fromID_id", "toID_id") values(1,7)
+INSERT INTO courseselect_coursehasprerequisite("fromID_id", "toID_id") values(8,7)
 
 -- CourseSemester
-INSERT INTO courseselect_coursesemester(semesterID, courseID_id) VALUES(1,7)
-INSERT INTO courseselect_coursesemester(semesterID, courseID_id) VALUES(2,7)
+INSERT INTO courseselect_coursesemester("semesterID", "courseID_id") VALUES(3,7) -- stæ2 um vor
+INSERT INTO courseselect_coursesemester("semesterID", "courseID_id") VALUES(1,1) -- stæ1 um haust
+INSERT INTO courseselect_coursesemester("semesterID", "courseID_id") VALUES(3,1) --stæ1 um vor
+INSERT INTO courseselect_coursesemester("semesterID", "courseID_id") VALUES(3,8) --lína um vor
 
