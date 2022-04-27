@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from courseselect.views import homepage
+from courseselect.views import course_selection
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('courselist', homepage),
+    path('homepage', homepage),
+    path('course-selection', course_selection),
 ]
