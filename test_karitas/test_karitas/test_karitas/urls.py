@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from courseselect.views import homepage
 from courseselect.views import course_selection
+from courseselect.views import courses_by_semester
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('homepage', homepage),
     path('course-selection', course_selection),
+    path('semester-test',courses_by_semester),
 ]
