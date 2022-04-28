@@ -21,7 +21,7 @@ def courses_by_semester(request):
     context = {'data': c}
     return render(request, 'semester-test.html',context)
 
-def get_prerequisite(request):
+def get_prerequisite(request): #kemur id-ið sem við viljum tjékka hér í request?
     context = {'prereq':CourseHasPrerequisite.get_prerequisite(1)}
     return render(request, 'course-selection.html',context)
 
