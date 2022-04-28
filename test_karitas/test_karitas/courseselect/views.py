@@ -19,7 +19,10 @@ def course_selection(request):
 
 def courses_by_semester(request):
     course_objects = CourseSemester.objects.raw("select * from courseselect_course C join courseselect_coursesemester S on S.courseid_id = C.ID where S.semesterid=1")
-    course_list = ",".join([str(course.name) for course in course_objects])
-    context = {'data': course_list}
+    c = Course.objects.all()
+    context = {'data': c}
     return render(request, 'semester-test.html',context)
+
+
+
     
