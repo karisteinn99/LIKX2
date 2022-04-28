@@ -9,14 +9,17 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="bg">
+        <img src="{% static 'backround_image.jpg' %}" alt="backround_image">
+    </div>
     <div class="login-container">
         <div id="login-text">Login</div>
         <img class="hr-logo" src="{% static 'hr-logo.png' %}" alt="hr-logo">
         <input class="login-text-input" type="text" name="username" id="username" value="username">
         <input class="login-text-input" id="password" type="text" name="username" id="username" value="password">
-        <button class="login-button" id="login-student"> LOGIN AS STUDENT </button> <button class="login-button" id="login-teacher"> LOGIN AS TEACHER </button>
-        <div class="forgot-password">Forgot password? <a id="click-here" href="https://www.beaumont.org/treatments/alzheimers-disease-rehabilitation">Click here</a> </div>
+        <button class="login-button" id="login-student" onclick="parent.location='course-selection'" > LOGIN AS STUDENT </button> <button class="login-button" id="login-teacher"> LOGIN AS TEACHER </button>
+        <div class="forgot-password">Forgot password? <a id="click-here" href="https://www.beaumont.org/treatments/alzheimers-disease-rehabilitation">Click here</a></div>
+        <button class="sign-up">Sign Up</button>
     </div>
-    
 </body>
 </html>

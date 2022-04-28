@@ -1,12 +1,31 @@
+#bg {
+    position: fixed; 
+    top: -50%; 
+    left: -50%; 
+    width: 200%; 
+    height: 200%;
+  }
+  #bg img {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    margin: auto; 
+    min-width: 50%;
+    min-height: 50%;
+  }
+  
 .login-container {
     position: relative;
     justify-content: center;
     width: auto;
-    height: 300px;
+    height: 350px;
     margin: 0 33%;
     top: 100px;
     min-width: 300px;
     background-color: rgb(182, 182, 182);
+    border-radius: 2px;
 }
 
 #login-text{
@@ -43,6 +62,7 @@
     text-indent: 2%;
     color: rgb(200, 200, 200);
     border: black solid 1px;
+    border-radius: 2px;
 }
 
 #password {
@@ -61,6 +81,7 @@
     font-size: 75%;
     font-weight: bold;
     border-radius: 7px;
+    box-shadow: 1px 1.5px rgb(51, 50, 50);
 }
 
 .login-button:hover {
@@ -72,13 +93,13 @@
 #login-teacher {
     position: absolute;
     justify-content: center;
-    left: 6%;
+    left: 50%;
 }
 
 #login-student {
     position: absolute;
     justify-content: center;
-    left: 50%;
+    left: 6%;
 }
 
 #click-here {
@@ -92,4 +113,19 @@
     left: 16%;
     right: 20%;
     text-align: center;
+}
+
+.sign-up {
+    background-color: white;
+    color: red;
+    font-weight: bold;
+    position: absolute;
+    width: 88%;
+    height: 30px;
+    left: 5.5%;
+    top: 300px;
+    text-align: center;
+    border-radius: 7px;
+    box-shadow: 1px 1.5px rgb(51, 50, 50);
+
 }
