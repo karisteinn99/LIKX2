@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Course
@@ -20,6 +21,9 @@ def courses_by_semester(request):
     context = {'data': c}
     return render(request, 'semester-test.html',context)
 
+def get_prerequisite(request):
+    context = {'prereq':CourseHasPrerequisite.get_prerequisite(1)}
+    return render(request, 'course-selection.html',context)
 
     #course_objects = CourseSemester.objects.raw("select * from courseselect_course C join courseselect_coursesemester S on S.courseid_id = C.ID where S.semesterid=1")
 

@@ -11,7 +11,12 @@
 	<h4>Allir áfangar </h4>
 	<ul>
 	{% for i in courses %}
-	<li>{{ i }}</li>
+	<li>{{ i }} {{ i.ects }} ECTS {{ i.semesterid }} </li>
+	{% endfor %}
+	<h4>Undanfarar </h4>
+	<ul>
+	{% for i in prereq %}
+	<li>{{ i }} </li>
 	{% endfor %}
 </body>
 </html>
