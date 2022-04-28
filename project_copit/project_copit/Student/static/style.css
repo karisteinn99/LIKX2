@@ -1,10 +1,31 @@
+#bg {
+    position: fixed; 
+    top: -50%; 
+    left: -50%; 
+    width: 200%; 
+    height: 200%;
+  }
+  #bg img {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    margin: auto; 
+    min-width: 50%;
+    min-height: 50%;
+  }
+  
 .login-container {
     position: relative;
+    justify-content: center;
     width: auto;
-    height: 300px;
-    min-height: 222px;
-    margin: 10% 33%;
+    height: 350px;
+    margin: 0 33%;
+    top: 100px;
+    min-width: 300px;
     background-color: rgb(182, 182, 182);
+    border-radius: 2px;
 }
 
 #login-text{
@@ -12,9 +33,10 @@
     position: absolute;
     justify-content: center;
     text-align: left;
-    font-size: 300%;
+    font-size: 260%;
+    font-weight: bold;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    margin: 6% 4% 4% 4%;
+    margin: 7% 4% 4% 4%;
 }
 
 .hr-logo {
@@ -23,8 +45,8 @@
     text-align: right;
     right: 0%;
     top: 0;
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     margin: 5%;
 }
 
@@ -33,17 +55,77 @@
     justify-content: center;
     text-align: left;
     font-weight: bold;
-    width: 90%;
-    height: 35px;
-    margin: 26% 3%;
-    
+    width: 87%;
+    height: 40px;
+    top: 115px;
+    left: 18px;
     text-indent: 2%;
     color: rgb(200, 200, 200);
-    border: red solid 2px;
+    border: black solid 1px;
+    border-radius: 2px;
 }
 
 #password {
-    margin-top: 38%;
+    top: 165px;
+}
+
+.login-button {
+    position: absolute;
+    justify-content: center;
+    background-color: red;
+    border: solid darkred 1px;
+    top: 225px;
+    width: 42%;
+    height: 30px;
+    color: aliceblue;
+    font-size: 75%;
+    font-weight: bold;
+    border-radius: 7px;
+    box-shadow: 1px 1.5px rgb(51, 50, 50);
+}
+
+.login-button:hover {
+    color: black;
+    background-color: rgb(245, 37, 37);
 }
 
 
+#login-teacher {
+    position: absolute;
+    justify-content: center;
+    left: 50%;
+}
+
+#login-student {
+    position: absolute;
+    justify-content: center;
+    left: 6%;
+}
+
+#click-here {
+    color: white;
+}
+.forgot-password {
+    color: white;
+    position: absolute;
+    width: auto;
+    top: 260px;
+    left: 16%;
+    right: 20%;
+    text-align: center;
+}
+
+.sign-up {
+    background-color: white;
+    color: red;
+    font-weight: bold;
+    position: absolute;
+    width: 88%;
+    height: 30px;
+    left: 5.5%;
+    top: 300px;
+    text-align: center;
+    border-radius: 7px;
+    box-shadow: 1px 1.5px rgb(51, 50, 50);
+
+}

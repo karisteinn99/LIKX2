@@ -13,15 +13,11 @@ class CourseHasPrerequisite(models.Model):
     toid = models.ForeignKey(Course, on_delete = models.CASCADE, related_name='id2') #foreign key CourseID
 
     def get_prerequisite(courseid):
-        all_objects = CourseHasPrerequisite.objects.raw("select * from CourseHasPrerequisite where fromid_id=7")
-        for obj in all_objects:
-            print(obj)
-        prereq_list = all_objects.toid_id
-        
-#        for object in all_objects:
-#            prereq_list = []
-#            prereq_list.append(all_objects.toid_id)
-        return prereq_list
+        prereq_objects = CourseHasPrerequisite.objects.raw("select * from courseselect_coursehasprerequisite where fromid_id=7")
+        #for obj in all_objects:
+        #    prereq_list = []
+        #    prereq_list.append(obj.toid)
+        return prereq_objects
 
     def __str__(self):
         return self.name
