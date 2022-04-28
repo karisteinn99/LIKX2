@@ -1,4 +1,4 @@
-"""test2 URL Configuration
+"""project_copit URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -14,14 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from courseselect.views import homepage
 from courseselect.views import course_selection
 from courseselect.views import courses_by_semester
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('homepage', homepage),
+    path('courselist/', homepage),
+    path('', include('Student.urls')),
     path('course-selection', course_selection),
     path('semester-test',courses_by_semester),
 ]

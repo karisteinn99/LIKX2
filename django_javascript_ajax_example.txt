@@ -1,0 +1,78 @@
+
+------ í views.py
+
+from django.http import JsonResponse
+
+from django.db.models.functions import Length
+from ???.models import Code
+
+
+def ParseDailyReportV2(request):
+    report_text = request.POST['dailyreport']
+    post_action = request.POST['post']
+
+    # For debugging
+    print(request.user)
+    print(request.user.is_superuser)
+
+    # dæmi hvernig má vinna með models
+    codes = Code.objects.all().order_by(Length('code_1').desc())
+
+    ...
+
+    data['date'] = datetime.datetime.now().date()
+
+    if something_went_wrong: 
+        data['errors'] = 'error message'
+
+    return JsonResponse(data)
+
+
+------ í urls.py
+
+from ???.views import ParseDailyReportV2
+
+urlpatterns = [
+    path('ajax/parse_daily_report_v2', ParseDailyReportV2, name='parse_daily_report_v2'),
+...
+    ]
+    
+
+------ í html skjalinu
+
+{% block javascript %}
+    <script>
+        $(document).ready(function(){
+            $("#accept_button_div").hide()
+        });
+
+        $("#btn_parse_daily_report").click(function () {
+            console.log( $("#the-text-box").val() );
+            var the_daily_report = $("#the-text-box").val();
+
+            $.ajax({
+                url: '/ajax/parse_daily_report_v2',
+                type: 'POST',
+                data: {'dailyreport': the_daily_report, 'post': false, 'csrfmiddlewaretoken': '{{ csrf_token }}',},
+                dataType: 'json',
+                success: function (data) {
+                    if (data.date) {
+                        $("#input_date").val(data.date);
+                    }
+
+                    if (data.errors) {
+                        $("#input_errors_div").show();
+                        $("#input_errors").html(data.errors);
+                        $("#accept_button_div").hide()
+                    }
+                    else {
+                        $("#input_errors_div").hide();
+                        $("#input_errors").html("")
+                        $("#accept_button_div").show()
+                    }
+                }
+            });
+        });
+
+    </script>
+{% endblock %}
