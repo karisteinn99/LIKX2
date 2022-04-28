@@ -16,7 +16,7 @@ def course_selection(request):
     context = {'courses':course_objects}
     return render(request, 'course-selection.html',context)
 
-def courses_by_semester(request):
+def courses_by_semester(request): #þetta má vera filter bara
     c = Course.objects.all()
     context = {'data': c}
     return render(request, 'semester-test.html',context)
@@ -25,13 +25,10 @@ def get_prerequisite(request): #kemur id-ið sem við viljum tjékka hér í req
     prereq_objects=CourseHasPrerequisite.get_prerequisite(courseid=7)
     prereq_list = []
     for obj in prereq_objects:
-        prereq_list.append(obj.toid_id)
+        prereq_list.append(obj.toid)
     context = {'prereq': prereq_list}
     return render(request, 'course-selection.html',context)
 
     #course_objects = CourseSemester.objects.raw("select * from courseselect_course C join courseselect_coursesemester S on S.courseid_id = C.ID where S.semesterid=1")
-
-
-
 
     
