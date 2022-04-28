@@ -22,7 +22,7 @@ def courses_by_semester(request):
     return render(request, 'semester-test.html',context)
 
 def get_prerequisite(request): #kemur id-ið sem við viljum tjékka hér í request?
-    context = {'prereq':CourseHasPrerequisite.get_prerequisite(1)}
+    context = {'prereq':CourseHasPrerequisite.get_prerequisite(7)}
     return render(request, 'course-selection.html',context)
 
     #course_objects = CourseSemester.objects.raw("select * from courseselect_course C join courseselect_coursesemester S on S.courseid_id = C.ID where S.semesterid=1")
