@@ -1,0 +1,49 @@
+.login-container {
+    position: relative;
+    width: auto;
+    height: 300px;
+    min-height: 222px;
+    margin: 10% 33%;
+    background-color: rgb(182, 182, 182);
+}
+
+#login-text{
+    display: inline;
+    position: absolute;
+    justify-content: center;
+    text-align: left;
+    font-size: 300%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 6% 4% 4% 4%;
+}
+
+.hr-logo {
+    position: absolute;
+    justify-content: center;
+    text-align: right;
+    right: 0%;
+    top: 0;
+    width: 60px;
+    height: 60px;
+    margin: 5%;
+}
+
+.login-text-input {
+    position: absolute;
+    justify-content: center;
+    text-align: left;
+    font-weight: bold;
+    width: 90%;
+    height: 35px;
+    margin: 26% 3%;
+    
+    text-indent: 2%;
+    color: rgb(200, 200, 200);
+    border: red solid 2px;
+}
+
+#password {
+    margin-top: 38%;
+}
+
+
