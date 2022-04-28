@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'courseselect',
-    'student',
+    'Student',
 ]
 
 MIDDLEWARE = [
@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'project_copit.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'CopIt',
+        'NAME': 'courses',
         'USER': 'postgres',
         'PASSWORD': '1234',
         'HOST': '127.0.0.1',
