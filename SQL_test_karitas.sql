@@ -16,11 +16,11 @@ select C.name from courseselect_course C where C.ID = 1
 
 
 -------------- DELETE:
-DELETE FROM courseselect_course C WHERE C.ID = 6 -- delete-a instönsum
+DELETE FROM courseselect_course C WHERE C.ID = 1 -- delete-a instönsum
 
 -------------- INSERT:
 -- Course
-INSERT INTO courseselect_course(ID,name, ects) values(1,'Stærðfræði I', 6)
+INSERT INTO courseselect_course(ID,name, ects) values(6,'Stærðfræði I', 6)
 INSERT INTO courseselect_course(name, ects) values('Stærðfræði II', 6)
 INSERT INTO courseselect_course(name, ects) values('Línuleg algebra', 6)
 
