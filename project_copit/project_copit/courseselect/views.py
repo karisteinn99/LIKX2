@@ -12,9 +12,7 @@ def homepage(request):
 
 def course_selection(request):
     course_objects = Course.objects.all()
-    #course_list = ",".join([course.name for course in course_objects])
-    #test_list = [1,2,3,4,5,6]
-    context = {'list':course_objects}
+    context = {'courses':course_objects}
     return render(request, 'course-selection.html',context)
 
 def courses_by_semester(request):
