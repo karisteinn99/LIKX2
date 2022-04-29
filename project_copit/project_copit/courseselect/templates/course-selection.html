@@ -11,8 +11,9 @@
 	<h4>Allir áfangar </h4>
 	<ul>
 	{% for i in courses %}
-	<li>{{ i }} - {{ i.ects }} ECTS - Undanfarar: {{i.get_prerequisite}}</li>
-	
+	<li>{{ i }} - {{ i.ects }} ECTS - Undanfarar:
+		{% for j in i.get_prerequisite %} {{ j }} {% endfor %}
+	</li>
 	{% endfor %}
 </body>
 </html>
