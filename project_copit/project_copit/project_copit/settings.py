@@ -88,15 +88,15 @@ DATABASES = {
     }
 }
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default=config('Database_URL')
-    )
-}
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=config('Database_URL')
+#     )
+# }
 
-SECRET_KEY = config('SECRET_KEY')
+# SECRET_KEY = config('SECRET_KEY')
 
-DEBUG = config('DEBUG', cast=bool)
+# DEBUG = config('DEBUG', cast=bool)
 
 
 
