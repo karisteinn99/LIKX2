@@ -18,13 +18,13 @@ from django.urls import path, include
 from courseselect.views import homepage
 from courseselect.views import course_selection
 from courseselect.views import courses_by_semester
-from courseselect.views import get_prerequisite
+from courseselect.models import Course
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('courselist/', homepage),
     path('', include('Student.urls')),
     path('course-selection', course_selection),
-    path('course-selection',get_prerequisite),
+    path('course-selection',Course.get_prerequisite),
     path('semester-test',courses_by_semester),
 ]
