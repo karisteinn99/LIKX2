@@ -18,11 +18,6 @@
 	<li>{{ i }} - {{ i.ects }} ECTS - Undanfarar: {% for c in i.get_prerequisite %} {{ c.name }} {% endfor %}</li>
 	{% endfor %}
 
-	<h4> Telja einingar </h4>
-	Result: {{selection}}
-	
-	<h4> Prerequisite check </h4>
-
 
 	<div class="box" id="leftbox">  
 	<h1>Course Selection</h1>
@@ -48,7 +43,7 @@
 		<div class="big-container"> 
 			<ul>
 				{% for i in courses %}
-				<li> <button class="course-button">{{ i }} - {{ i.ects }} ECTS - Undanfarar: {{ i.get_prerequisite }}</button></li>
+				<li> <button class="course-button">{{ i }} - {{ i.ects }} ECTS - Undanfarar: {% for c in i.get_prerequisite %} {{ c.name }} {% endfor %}</button></li>
 				{% endfor %}
 			</ul>
 		</div>
@@ -58,6 +53,10 @@
 		<h1>Check</h1>
 		<div class="big-container">
 			
+		<h4> Telja einingar </h4>
+		Result: {{selection}}
+	
+		<h4> Prerequisite check </h4>
 		</div>
 	</div>
 
