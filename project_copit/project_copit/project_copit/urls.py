@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from courseselect.views import homepage, course_selection, big_check, check_ects_requirements
+from courseselect.views import homepage, course_selection, big_check
 from courseselect.models import Course
 from courseselect.checks import count_ects
 
@@ -23,8 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('courselist/', homepage),
     path('', include('courseselect.urls')),
-    path('course-selection', big_check),
     path('course-selection', course_selection),
+    path('course-selection-check', big_check),
     path('course-selection',Course.get_prerequisite),
     path('course-selection',count_ects),
     

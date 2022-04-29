@@ -2,7 +2,7 @@ from multiprocessing import context
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from courseselect.checks import count_ects
+from courseselect.checks import count_ects, check_prereq
 from .models import Course
 from .models import CourseHasPrerequisite
 from .models import CourseSemester
@@ -14,7 +14,7 @@ def homepage(request):
     return render(request, 'homepage.html')
 
 def course_selection(request):
-    print("inní course select")
+    print("inní course_selection")
     course_objects = Course.objects.all()
     context = {'courses':course_objects}
     return render(request, 'course-selection.html',context)
@@ -23,20 +23,24 @@ def course_selection(request):
     #course_objects = CourseSemester.objects.raw("select * from courseselect_course C join courseselect_coursesemester S on S.courseid_id = C.ID where S.semesterid=1")
 
 def big_check(request):
-    print("inní big check")
+    check_result_string = ""#stór strengur
     course_objects = Course.objects.all() #þetta verður væntanlega valið hjá user
     print(course_objects)
-    ects_req = check_ects_requirements(course_objects) #check ects
-    print(ects_req)
-    context = {'ects_req': ects_req}
-    print(context)
+    check_result_string += (check_ects_requirements(course_objects)) + "\n" #check ects
+    print(check_result_string)
+
+    check_result_string += check_prereq(course_objects) + "\n" #prerequisites
 
     #fleiri check
 
-
+    context = {'big_req':check_result_string}
+    print(context)
 
     return render(request, 'course-selection.html', context)
 
 def check_ects_requirements(course_objects):
     return count_ects(course_objects)
+
+#def check_prereq_requirements(course_objects):
+#    return check_prereq(course_objects)
     
