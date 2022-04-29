@@ -11,7 +11,6 @@ class Course(models.Model):
         prereq_list = []
         for obj in all_objects.values():
             prereq_list.append(Course.objects.get(pk=obj['toid_id']))
-            
         return prereq_list
 
     def __str__(self):

@@ -22,10 +22,13 @@ def course_selection(request):
     #course_objects = CourseSemester.objects.raw("select * from courseselect_course C join courseselect_coursesemester S on S.courseid_id = C.ID where S.semesterid=1")
 
 def big_check(request):
+    print("inní big check")
     course_objects = Course.objects.all() #þetta verður væntanlega valið hjá user
-    
+    print(course_objects)
     ects_req = check_ects_requirements(course_objects) #check ects
+    print(ects_req)
     context = {'ects_req': ects_req}
+    print(context)
 
     #fleiri check
 

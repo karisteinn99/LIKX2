@@ -4,9 +4,12 @@ from .models import Course
 from .models import CourseHasPrerequisite
 
 def count_ects(selected_courses):
+    print('inní count_ects')
+    print(selected_courses)
     count = 0
     for course in selected_courses:
         count += course.ects 
+        print(count)
     if count >= 180:
         return check_success_etcs(True, count)
     else:
