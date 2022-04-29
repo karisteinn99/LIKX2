@@ -7,16 +7,10 @@ class Course(models.Model):
 
     def get_prerequisite(self):
         all_objects = CourseHasPrerequisite.objects.filter(fromid_id=self.id)
-        print(all_objects.values())
         prereq_list = []
         for obj in all_objects.values():
-            print(obj['toid_id'])
-            prereq_list.append(obj['toid_id'])
-        prereq = {id:prereq_list}
+            prereq_list.append(obj)#['toid_id'])
         return prereq_list
-
-    def ehv(self):
-        return "hallo"
 
     def __str__(self):
         return self.name
@@ -25,6 +19,18 @@ class CourseHasPrerequisite(models.Model):
     fromid = models.ForeignKey(Course, on_delete = models.CASCADE, related_name='id1') #foreign key CourseIDa
     toid = models.ForeignKey(Course, on_delete = models.CASCADE, related_name='id2') #foreign key CourseID
 
+    def get_name(self):
+        objects = Course.objects.filter(id=self['toid_id'])
+        name_list = []
+        for obj in objects:
+            name_list.append(obj.name)
+        return name_list
+        #all_objects = Course.objects.filter(id = self.toid_id)
+        #ret_list = []
+        #for obj in all_objects:
+        #    print(obj)
+        #    ret_list.append(obj.name)
+        #return ret_list
 
     def __str__(self):
         return self.name

@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from courseselect.views import homepage, course_selection, courses_by_semester
+from courseselect.views import homepage, course_selection
 from courseselect.models import Course
 
 urlpatterns = [
@@ -24,5 +24,4 @@ urlpatterns = [
     path('', include('courseselect.urls')),
     path('course-selection', course_selection),
     path('course-selection',Course.get_prerequisite),
-    path('semester-test',courses_by_semester),
 ]
