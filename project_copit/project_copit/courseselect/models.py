@@ -9,7 +9,7 @@ class Course(models.Model):
         all_objects = CourseHasPrerequisite.objects.filter(fromid_id=self.id)
         prereq_list = []
         for obj in all_objects.values():
-            prereq_list.append(obj['toid_id'])
+            prereq_list.append(obj)#['toid_id'])
         return prereq_list
 
     def __str__(self):
