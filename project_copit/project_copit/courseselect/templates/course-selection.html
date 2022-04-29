@@ -4,19 +4,47 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	{% load static %}
+    <link rel="stylesheet"  href="{%  static  'course-select.css'  %}">
 	<title>course-selection</title>
 </head>
 <body>
-	<h1>Veldu áfanga AAAAAAAasdfioasdjAAAAAAA</h1>
-	<h4>Allir áfangar </h4>
-	<ul>
-	{% for i in courses %}
-	<li>{{ i }} - {{ i.ects }} ECTS - Undanfarar: {{ i.get_prerequisite }}</li>
-	{% endfor %}
-	<h4>Undanfarar </h4>
-	<ul>
-	{% for i in prereq %}
-	<li>{{ i }} </li>
-	{% endfor %}
+	<div class="box" id="leftbox">  
+	<h1>Course Selection</h1>
+	<h3>1. Year</h3>
+	<div class="year-container">
+		<div class="semester"></div>
+		<div class="semester"></div>
+	</div>
+	<h3>2. Year</h3>
+	<div class="year-container">
+		<div class="semester"></div>
+		<div class="semester"></div>
+	</div>
+	<h3>3. Year</h3>
+	<div class="year-container">
+		<div class="semester"></div>
+		<div class="semester"></div>
+	</div>
+
+	</div>
+	<div class="box" id="middlebox">
+		<h1>Courses Available</h1>
+		<div class="big-container"> 
+			<ul>
+				{% for i in courses %}
+				<li> <button class="course-button">{{ i }} - {{ i.ects }} ECTS - Undanfarar: {{ i.get_prerequisite }}</button></li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+
+	<div class="box" id="rightbox">
+		<h1>Check</h1>
+		<div class="big-container">
+			
+		</div>
+	</div>
+
 </body>
 </html>
