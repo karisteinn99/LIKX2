@@ -26,5 +26,5 @@ urlpatterns = [
     path('course-selection', course_selection),
     path('course-selection',Course.get_prerequisite),
     path('course-selection',count_ects),
-    path('course-selection', big_check)
+    path('course-selection', big_check),
 ]
