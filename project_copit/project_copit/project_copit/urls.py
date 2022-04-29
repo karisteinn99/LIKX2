@@ -23,8 +23,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('courselist/', homepage),
     path('', include('courseselect.urls')),
+    path('course-selection', big_check),
     path('course-selection', course_selection),
     path('course-selection',Course.get_prerequisite),
     path('course-selection',count_ects),
-    path('course-selection', big_check)
+    
 ]

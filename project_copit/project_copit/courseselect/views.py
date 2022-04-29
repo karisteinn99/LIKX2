@@ -14,6 +14,7 @@ def homepage(request):
     return render(request, 'homepage.html')
 
 def course_selection(request):
+    print("inní course select")
     course_objects = Course.objects.all()
     context = {'courses':course_objects}
     return render(request, 'course-selection.html',context)
