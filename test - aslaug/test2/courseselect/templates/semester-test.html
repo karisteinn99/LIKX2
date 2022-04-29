@@ -7,19 +7,16 @@
 	<title>Homepage</title>
 </head>
 <body>
-	<h1>Veldu þína áfanga.</h1>
-	
-
-{% for c in courses %}
-
-<p> Course is {{ c }}</p>
-
-{% endfor %}
-
-	<h4>List is </h4>
+	<h1>Veldu áfanga asdfasdf</h1>
+	<h4>Allir áfangar </h4>
 	<ul>
-	{% for i in list %}
-	<li>{{ i }}</li>
+	{% for i in courses %}
+	<li>{{ i }} {{ i.ects }} ECTS {{ i.semesterid }} </li>
+	{% endfor %}
+	<h4>Undanfarar </h4>
+	<ul>
+	{% for i in prereq %}
+	<li>{{ i }} </li>
 	{% endfor %}
 </body>
 </html>

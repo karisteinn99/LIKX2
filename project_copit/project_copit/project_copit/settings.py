@@ -10,7 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+from operator import truediv
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -80,11 +82,22 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'testVX',
         'USER': 'postgres',
-        'PASSWORD': 'Marino12',
+        'PASSWORD': 'Hjol5129',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
 }
+
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=config('Database_URL')
+#     )
+# }
+
+# SECRET_KEY = config('SECRET_KEY')
+
+# DEBUG = config('DEBUG', cast=bool)
+
 
 
 # Password validation
