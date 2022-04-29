@@ -14,9 +14,9 @@ def count_ects(selected_courses):
 
 def check_success_etcs(ret_tup):
     if ret_tup[0] == True:
-        return 'Success'
+        return 'Success with % ECTS'.format(ret_tup[1])
     else:
-        return 'ECTS requirement not fulfilled % ECTS missing'.format(180-ret_tup[1])
+        return 'ECTS requirement not fulfilled with % ECTS (% ECTS missing)'.format(ret_tup[1],180-ret_tup[1])
 
 
 def check_prereq(selected_courses): #bara dæmi um object sem eru valin
