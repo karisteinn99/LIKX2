@@ -8,8 +8,8 @@ class Course(models.Model):
     def __str__(self):
         return self.name
 
-    def get_prerequisite():
-        all_objects = CourseHasPrerequisite.objects.filter(fromid_id=7)
+    def get_prerequisite(self):
+        all_objects = CourseHasPrerequisite.objects.filter(fromid_id=self.id)
         print(all_objects.values())
         prereq_list = []
         for obj in all_objects.values():

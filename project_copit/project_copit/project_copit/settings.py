@@ -78,9 +78,9 @@ WSGI_APPLICATION = 'project_copit.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'courses',
+        'NAME': 'testVX',
         'USER': 'postgres',
-        'PASSWORD': '1234',
+        'PASSWORD': 'Marino12',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
