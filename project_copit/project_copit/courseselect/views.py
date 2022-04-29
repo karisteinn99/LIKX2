@@ -5,7 +5,8 @@ from .models import Course
 from .models import CourseHasPrerequisite
 from .models import CourseSemester
 
-
+def loginPage(request):
+    return render(request, 'loginPage.html')
 
 def homepage(request):
     #return HttpResponse('homepage')

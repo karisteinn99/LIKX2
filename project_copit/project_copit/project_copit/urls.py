@@ -21,7 +21,7 @@ from courseselect.models import Course
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('courselist/', homepage),
-    path('', include('Student.urls')),
+    path('', include('courseselect.urls')),
     path('course-selection', course_selection),
     path('course-selection',Course.get_prerequisite),
     path('semester-test',courses_by_semester),
