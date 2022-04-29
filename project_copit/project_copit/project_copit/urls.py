@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from courseselect.views import homepage, course_selection, big_check
+from courseselect.views import homepage, course_selection, big_check, check_ects_requirements
 from courseselect.models import Course
 from courseselect.checks import count_ects
 
