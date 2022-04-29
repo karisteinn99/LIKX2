@@ -9,6 +9,22 @@
 	<title>course-selection</title>
 </head>
 <body>
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+	<h1>Veldu áfanga</h1>
+	<h4>Allir áfangar </h4>
+	{% for i in courses %}
+	<li>{{ i }} - {{ i.ects }} ECTS - Undanfarar: {% for c in i.get_prerequisite %} {{ c.name }} {% endfor %}</li>
+	{% endfor %}
+
+	<h4> Telja einingar </h4>
+	Result: {{selection}}
+	
+	<h4> Prerequisite check </h4>
+	{}
+=======
+>>>>>>> Stashed changes
 	<div class="box" id="leftbox">  
 	<h1>Course Selection</h1>
 	<h3>1. Year</h3>
@@ -45,6 +61,10 @@
 			
 		</div>
 	</div>
+<<<<<<< Updated upstream
+=======
+>>>>>>> 680d48c454a70aeedc847fcb8d920dab5550691d
+>>>>>>> Stashed changes
 
 </body>
 </html>
