@@ -15,10 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+<<<<<<< HEAD
+from courseselect.views import homepage, course_selection, courses_by_semester
+=======
 from courseselect.views import homepage
 from courseselect.views import course_selection
 from courseselect.views import courses_by_semester
+<<<<<<< HEAD
 from courseselect.models import Course
+=======
+from courseselect.views import get_prerequisite
+>>>>>>> bfcbccd13607c1329100e9fcf7bee61f00aad129
+>>>>>>> 92a783c6e153bca336288277c87f7495225bee74
 
 urlpatterns = [
     path('admin/', admin.site.urls),
