@@ -32,3 +32,7 @@ def check_prereq(selected_courses): #listi af objects sem eru valin
     else:
         return "Prerequisites not okay! Missing courses are: {}".format(false_list) #vantar að hafa nöfnin sem output ekki objects
 
+def check_correct_semester(selected_courses):
+    for course in selected_courses:
+        xxx
+    return
