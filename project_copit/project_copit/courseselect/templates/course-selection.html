@@ -37,9 +37,12 @@
 		<h1>Courses Available</h1>
 		<div class="big-container"> 
 			<ul>
+				{% for semester in semesters %}
+				{{semester}}:
 				{% for i in courses %}
-				<li> <button class="course-button">{{ i }} - {{ i.get_semester }} - {{ i.ects }} ECTS - Undanfarar: {% for c in i.get_prerequisite %} {{ c.name }} {% endfor %}</button></li>
-				{% endfor %}
+				{% if i.get_semesterid == semester.id %}
+				<li> <button class="course-button">{{ i }} - {{ i.ects }} ECTS - Undanfarar: {% for c in i.get_prerequisite %} {{ c.name }} {% endfor %}</button></li>
+				{% endfor %}{% endfor %}
 			</ul>
 		</div>
 	</div>
