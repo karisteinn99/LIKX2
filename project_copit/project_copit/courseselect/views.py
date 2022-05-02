@@ -16,8 +16,7 @@ def homepage(request):
 
 def course_selection(request):
     course_objects = Course.objects.all()
-    semesters = Semesters.objects.all()
-    context = {'semesters': semesters,'courses': course_objects}
+    context = {'courses': course_objects}
     return render(request, 'course-selection.html',context)
 
 
