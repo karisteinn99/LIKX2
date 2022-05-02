@@ -26,12 +26,6 @@ class CourseHasPrerequisite(models.Model):
         for obj in all_objects:
             name_list.append(obj.name)
         return name_list
-        #all_objects = Course.objects.filter(id = self.toid_id)
-        #ret_list = []
-        #for obj in all_objects:
-        #    print(obj)
-        #    ret_list.append(obj.name)
-        #return ret_list
 
     def __str__(self):
         return self.name
@@ -43,5 +37,8 @@ class CourseSemester(models.Model):
     def __str__(self):
         return self.name
 
+class Label(models.Model):
+    label = models.CharField
 
-        
+    def __str__(self):
+        return self.label
