@@ -13,9 +13,9 @@ class Course(models.Model):
             prereq_list.append(Course.objects.get(pk=obj['toid_id']))
         return prereq_list
         
-    def get_coursesemester(self):
+    def get_semester(self):
         course_object = CourseSemester.objects.filter(courseid_id=self.id)
-        return course_object.semester
+        return course_object.semesterid_id
 
     def __str__(self):
         return self.name
