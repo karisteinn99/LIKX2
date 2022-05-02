@@ -2,8 +2,20 @@ from django.db import models
 
 # Create your models here.
 class Course(models.Model):
+    coursecode = models.CharField(max_length=255) #er hægt að gera þetta að primary key?
     name = models.CharField(max_length=63)
+    department_name = models.CharField(max_length=63)
+    semester_name = models.CharField(max_length=63)
+    semester_type = models.CharField(max_length=63)
     ects = models.IntegerField()
+    description = models.TextField()
+    outcome = models.TextField()
+    structure = models.TextField()
+    assessment = models.TextField()
+    methods = models.TextField()
+    teaching_language = models.CharField(max_length=63)
+    has_prerequisite = models.BinaryField()
+
 
     def get_prerequisite(self):
         all_objects = CourseHasPrerequisite.objects.filter(fromid_id=self.id)
@@ -23,11 +35,11 @@ class Course(models.Model):
         return self.name
 
 class CourseHasPrerequisite(models.Model):
-    fromid = models.ForeignKey(Course, on_delete = models.CASCADE, related_name='id1') #foreign key CourseIDa
-    toid = models.ForeignKey(Course, on_delete = models.CASCADE, related_name='id2') #foreign key CourseID
+    from_course_code = models.ForeignKey(Course, on_delete = models.CASCADE, related_name='id1') #foreign key CourseIDa
+    to_course_code = models.ForeignKey(Course, on_delete = models.CASCADE, related_name='id2') #foreign key CourseID
 
     def get_name_from_id(self):
-        all_objects = Course.objects.filter(id=self['toid_id'])
+        all_objects = Course.objects.filter(id=self['to_course_code'])
         name_list = []
         for obj in all_objects:
             name_list.append(obj.name)
