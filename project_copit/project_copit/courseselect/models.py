@@ -15,6 +15,7 @@ class Course(models.Model):
         
     def get_semester(self):
         course_object = CourseSemester.objects.filter(courseid_id=self.id)
+        print(course_object.semesterid_id)
         return course_object.semesterid_id
 
     def __str__(self):
