@@ -31,9 +31,17 @@ INSERT INTO courseselect_coursehasprerequisite(fromid_id, toid_id) values(7,8)
 INSERT INTO courseselect_coursehasprerequisite(fromid_id, toid_id) values(1,7)
 INSERT INTO courseselect_coursehasprerequisite(fromid_id, toid_id) values(8,7)
 
+-- Semesters
+INSERT INTO courseselect_semesters(description) VALUES('Haust 12V')
+INSERT INTO courseselect_semesters(description) VALUES('Haust 3V')
+INSERT INTO courseselect_semesters(description) VALUES('Vor 12V')
+INSERT INTO courseselect_semesters(description) VALUES('Vor 3V')
+
+
 -- CourseSemester
-INSERT INTO courseselect_coursesemester(semesterid, courseid_id) VALUES(3,7) -- stæ2 um vor
-INSERT INTO courseselect_coursesemester(semesterid, courseid_id) VALUES(1,1) -- stæ1 um haust
-INSERT INTO courseselect_coursesemester(semesterid, courseid_id) VALUES(3,1) --stæ1 um vor
-INSERT INTO courseselect_coursesemester(semesterid, courseid_id) VALUES(3,8) --lína um vor
+INSERT INTO courseselect_coursesemester(semesterid_id, courseid_id) VALUES(3,7) -- stæ2 um vor
+INSERT INTO courseselect_coursesemester(semesterid_id, courseid_id) VALUES(1,1) -- stæ1 um haust
+INSERT INTO courseselect_coursesemester(semesterid_id, courseid_id) VALUES(3,1) --stæ1 um vor
+INSERT INTO courseselect_coursesemester(semesterid_id, courseid_id) VALUES(3,8) --lína um vor
+
 

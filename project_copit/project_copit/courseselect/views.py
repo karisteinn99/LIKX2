@@ -15,7 +15,6 @@ def homepage(request):
     return render(request, 'homepage.html')
 
 def course_selection(request):
-    print("inní course_selection")
     course_objects = Course.objects.all()
     semesters = Semesters.objects.all()
     context = {'semesters': semesters,'courses':course_objects}
@@ -23,7 +22,7 @@ def course_selection(request):
 
 
 def big_check(request):
-    check_result_string = ""#stór strengur
+    check_result_string = "" #stór strengur
     course_objects = Course.objects.all() #þetta verður væntanlega valið hjá user
     print(course_objects)
     check_result_string += (check_ects_requirements(course_objects)) + "\n" #check ects

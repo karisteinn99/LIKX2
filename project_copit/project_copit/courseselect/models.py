@@ -12,10 +12,9 @@ class Course(models.Model):
         for obj in all_objects.values():
             prereq_list.append(Course.objects.get(pk=obj['toid_id']))
         return prereq_list
-
+        
     def get_semester(self):
-        all_objects = CourseSemester.objects.get()
-        return 
+        all_objects = CourseSemester.objects.filter(courseid_id=self.id)
 
     def __str__(self):
         return self.name
