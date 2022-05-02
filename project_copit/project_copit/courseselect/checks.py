@@ -17,10 +17,11 @@ def count_ects(selected_courses):
 
 
 def check_prereq(selected_courses): #listi af objects sem eru valin
+    '''Vantar að ath mv annir ekki bara heildina'''
     is_okay = True
     false_list = []
     for course in selected_courses:
-        prereq_list=(course.get_prerequisite()) #prereqs fyrir þennan course
+        prereq_list = course.get_prerequisite() #prereqs fyrir þennan course
         for prereq in prereq_list:
             if prereq not in selected_courses:
                 print("{} missing".format(prereq.id))
@@ -34,5 +35,5 @@ def check_prereq(selected_courses): #listi af objects sem eru valin
 
 def check_correct_semester(selected_courses):
     for course in selected_courses:
-        xxx
-    return
+        ''
+    return ''

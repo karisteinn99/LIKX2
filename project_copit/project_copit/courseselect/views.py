@@ -16,11 +16,7 @@ def homepage(request):
 
 def course_selection(request):
     course_objects = Course.objects.all()
-    semesters = Semesters.objects.all()
-    course_by_semester = {}
-    for semester in semesters:
-        course_by_semester[semester] = course_objects.filter()
-    context = {'semesters': semesters, 'courses': course_by_semester}
+    context = {'courses': course_objects}
     return render(request, 'course-selection.html',context)
 
 def big_check(request):

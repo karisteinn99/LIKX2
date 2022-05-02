@@ -7,16 +7,17 @@ class Course(models.Model):
 
     def get_prerequisite(self):
         all_objects = CourseHasPrerequisite.objects.filter(fromid_id=self.id)
-        
         prereq_list = []
         for obj in all_objects.values():
             prereq_list.append(Course.objects.get(pk=obj['toid_id']))
         return prereq_list
-        
+    
     def get_semester(self):
-        course_object = CourseSemester.objects.filter(courseid_id=self.id)
-        print(course_object.semesterid_id)
-        return course_object.semesterid_id
+        all_objects = CourseSemester.objects.filter(courseid=self.id)
+        semester_list = []
+        for obj in all_objects:
+            semester_list.append(obj)
+        return semester_list
 
     def __str__(self):
         return self.name
