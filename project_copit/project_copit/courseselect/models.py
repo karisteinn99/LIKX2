@@ -38,7 +38,7 @@ class CourseSemester(models.Model):
         return self.name
 
 class Label(models.Model):
-    label = models.CharField
+    label_name = models.CharField
 
     def __str__(self):
-        return self.label
+        return self.label_name
