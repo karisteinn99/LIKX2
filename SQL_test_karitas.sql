@@ -10,6 +10,7 @@ join courseselect_course C2 on C2.ID = P.toid_id
 select * from courseselect_course -- sjá course töfluna
 select * from courseselect_coursehasprerequisite -- sjá coursehasprerequisite töfluna
 select * from courseselect_coursesemester -- sjá coursesemester töfluna
+select * from courseselect_semesters
 
 select C.ID from courseselect_course C where C.name = 'Línuleg algebra'
 select C.name from courseselect_course C where C.ID = 1
@@ -17,11 +18,11 @@ select * from courseselect_coursehasprerequisite where fromid_id=7
 
 
 -------------- DELETE:
-DELETE FROM courseselect_course C WHERE C.ID = 1 -- delete-a instönsum
+DELETE FROM courseselect_course C WHERE C.ID = 8 -- delete-a instönsum
 
 -------------- INSERT:
 -- Course
-INSERT INTO courseselect_course(ID,name, ects) values(6,'Stærðfræði I', 6)
+INSERT INTO courseselect_course(name, ects) values('Stærðfræði I', 6)
 INSERT INTO courseselect_course(name, ects) values('Stærðfræði II', 6)
 INSERT INTO courseselect_course(name, ects) values('Línuleg algebra', 6)
 
