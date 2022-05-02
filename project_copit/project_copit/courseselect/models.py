@@ -13,6 +13,10 @@ class Course(models.Model):
             prereq_list.append(Course.objects.get(pk=obj['toid_id']))
         return prereq_list
 
+    def get_semester(self):
+        all_objects = CourseSemester.objects.get()
+        return 
+
     def __str__(self):
         return self.name
 
@@ -30,15 +34,22 @@ class CourseHasPrerequisite(models.Model):
     def __str__(self):
         return self.name
 
+class Semesters(models.Model):
+    description = models.CharField(max_length=63)
+
+    def __str__(self):
+        return self.description
+    
+
 class CourseSemester(models.Model):
     courseid = models.ForeignKey(Course, on_delete = models.CASCADE) #foreign key CourseID
-    semesterid = models.IntegerField()
+    semesterid = models.ForeignKey(Semesters, on_delete = models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return self.courseid
 
-class Label(models.Model):
-    label_name = models.CharField
+#class Label(models.Model):
+#    label_name = models.CharField()
 
-    def __str__(self):
-        return self.label_name
+#    def __str__(self):
+#        return self.label_name
