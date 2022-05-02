@@ -38,7 +38,7 @@
 		<div class="big-container"> 
 			<ul>
 				{% for i in courses %}
-				<li> <button class="course-button">{{ i }} - {{ semester }} - {{ i.ects }} ECTS - Undanfarar: {% for c in i.get_prerequisite %} {{ c.name }} {% endfor %}</button></li>
+				<li> <button class="course-button">{{ i }} - {{ i.get_semester }} - {{ i.ects }} ECTS - Undanfarar: {% for c in i.get_prerequisite %} {{ c.name }} {% endfor %}</button></li>
 				{% endfor %}
 			</ul>
 		</div>
