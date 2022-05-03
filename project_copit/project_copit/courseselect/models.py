@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Course(models.Model):
-    coursecode = models.CharField(primary_key = True, max_length=255, default='default') #er hægt að gera þetta að primary key?
+    coursecode = models.CharField(primary_key = True, max_length=255, default='default') 
     name = models.CharField(max_length=63)
     department_name = models.CharField(max_length=63)
     semester_name = models.CharField(max_length=63)
