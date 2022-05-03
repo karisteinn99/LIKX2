@@ -13,6 +13,7 @@ class Course(models.Model):
     has_prerequisite = models.IntegerField()
 
 
+
     def get_prerequisite(self):
         all_objects = CourseHasPrerequisite.objects.filter(fromid_id=self.id)
         prereq_list = []
@@ -31,11 +32,14 @@ class Course(models.Model):
         return self.name
 
 class CourseHasPrerequisite(models.Model):
-    course_id = models.ForeignKey(Course, on_delete = models.CASCADE, related_name = 'id1')
-    course_code = models.CharField(max_length=255)
+    course_c = models.CharField(max_length=255)
     prereq_course_code = models.CharField(max_length=255)
-    from_id = models.ForeignKey(Course, on_delete = models.CASCADE, related_name='id1') #foreign key CourseIDa
-    to_id = models.ForeignKey(Course, on_delete = models.CASCADE, related_name='id2') #foreign key CourseID
+    course_id = (Course.objects.filter(course_code = course_c)[0]).id
+    prereq_course_id = (Course.objects.filter(course_code = prereq_course_code)[0]).id
+
+
+    #from_id = models.ForeignKey(Course, on_delete = models.CASCADE, related_name='id1') #foreign key CourseIDa
+    #to_id = models.ForeignKey(Course, on_delete = models.CASCADE, related_name='id2') #foreign key CourseID
 
 
 
