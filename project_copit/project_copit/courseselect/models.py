@@ -31,8 +31,13 @@ class Course(models.Model):
         return self.name
 
 class CourseHasPrerequisite(models.Model):
+    course_id = models.ForeignKey(Course, on_delete = models.CASCADE, related_name = 'id1')
+    course_code = models.CharField(max_length=255)
+    prereq_course_code = models.CharField(max_length=255)
     from_id = models.ForeignKey(Course, on_delete = models.CASCADE, related_name='id1') #foreign key CourseIDa
     to_id = models.ForeignKey(Course, on_delete = models.CASCADE, related_name='id2') #foreign key CourseID
+
+
 
     def get_name_from_id(self):
         all_objects = Course.objects.filter(id=self['to_id'])
