@@ -46,3 +46,9 @@ INSERT INTO courseselect_coursesemester(semesterid_id, courseid_id) VALUES(3,1) 
 INSERT INTO courseselect_coursesemester(semesterid_id, courseid_id) VALUES(3,8) --lína um vor
 
 
+
+
+
+-- test
+select * from courseselect_course
+

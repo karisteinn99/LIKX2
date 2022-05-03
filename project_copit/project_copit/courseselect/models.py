@@ -2,19 +2,15 @@ from django.db import models
 
 # Create your models here.
 class Course(models.Model):
-    coursecode = models.CharField(primary_key = True, max_length=255, default='default') 
-    name = models.CharField(max_length=63)
-    department_name = models.CharField(max_length=63)
-    semester_name = models.CharField(max_length=63)
-    semester_type = models.CharField(null=True, max_length=63)
+    course_code = models.CharField(max_length=255) 
+    name = models.CharField(max_length=255)
+    department_name = models.CharField(max_length=255)
+    semester_name = models.CharField(max_length=255)
+    semester_type = models.CharField(null=True, max_length=255)
     ects = models.IntegerField()
     description = models.TextField(null=True)
-    outcome = models.TextField(null=True)
-    structure = models.TextField(null=True)
-    assessment = models.TextField(null=True)
-    methods = models.TextField(null=True)
-    teaching_language = models.CharField(max_length=63)
-    has_prerequisite = models.BinaryField()
+    teaching_language = models.CharField(max_length=255)
+    has_prerequisite = models.IntegerField()
 
 
     def get_prerequisite(self):
@@ -35,11 +31,11 @@ class Course(models.Model):
         return self.name
 
 class CourseHasPrerequisite(models.Model):
-    from_course_code = models.ForeignKey(Course, on_delete = models.CASCADE, related_name='id1') #foreign key CourseIDa
-    to_course_code = models.ForeignKey(Course, on_delete = models.CASCADE, related_name='id2') #foreign key CourseID
+    from_id = models.ForeignKey(Course, on_delete = models.CASCADE, related_name='id1') #foreign key CourseIDa
+    to_id = models.ForeignKey(Course, on_delete = models.CASCADE, related_name='id2') #foreign key CourseID
 
     def get_name_from_id(self):
-        all_objects = Course.objects.filter(id=self['to_course_code'])
+        all_objects = Course.objects.filter(id=self['to_id'])
         name_list = []
         for obj in all_objects:
             name_list.append(obj.name)
