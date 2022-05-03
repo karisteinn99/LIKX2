@@ -9,15 +9,7 @@ class Course(models.Model):
     semester_type = models.CharField(null=True, max_length=255)
     ects = models.IntegerField()
     description = models.TextField(null=True)
-<<<<<<< Updated upstream
     teaching_language = models.CharField(max_length=255)
-=======
-    outcome = models.TextField(null=True)
-    structure = models.TextField(null=True)
-    assessment = models.TextField(null=True)
-    methods = models.TextField(null=True)
-    teaching_language = models.CharField(max_length=63)
->>>>>>> Stashed changes
     has_prerequisite = models.IntegerField()
 
 
@@ -40,9 +32,10 @@ class Course(models.Model):
         return self.name
 
 class CourseHasPrerequisite(models.Model):
-    course_c = models.CharField(max_length=255)
+    course_c = models.CharField(max_length=255) #loada frá skjali
     prereq_course_code = models.CharField(max_length=255)
-    course_id = (Course.objects.filter(course_code = course_c)[0]).id
+    course_object = Course.objects.filter(course_code = course_c)
+
     prereq_course_id = (Course.objects.filter(course_code = prereq_course_code)[0]).id
 
 
