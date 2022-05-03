@@ -9,7 +9,15 @@ class Course(models.Model):
     semester_type = models.CharField(null=True, max_length=255)
     ects = models.IntegerField()
     description = models.TextField(null=True)
+<<<<<<< Updated upstream
     teaching_language = models.CharField(max_length=255)
+=======
+    outcome = models.TextField(null=True)
+    structure = models.TextField(null=True)
+    assessment = models.TextField(null=True)
+    methods = models.TextField(null=True)
+    teaching_language = models.CharField(max_length=63)
+>>>>>>> Stashed changes
     has_prerequisite = models.IntegerField()
 
 
