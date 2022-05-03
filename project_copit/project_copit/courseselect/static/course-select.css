@@ -1,9 +1,15 @@
-.course-button {
+.course {
     margin: 1%;
-    width: 100%;
+    height: fit-content;
+    width: fit-content;
     text-align: left;
+    border: black solid 1px;
+    cursor: move;
 }
 
+.coursebutton.dragging {
+    opacity: .5;
+}
 
 h1 {
     text-align: center;
@@ -57,7 +63,7 @@ h3 {
     border: 1px solid red;
 }
 
-.big-container {
+.bigContainer {
     position: relative;
     display: flex;
     width: auto;

@@ -6,12 +6,11 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	{% load static %}
     <link rel="stylesheet"  href="{%  static  'course-select.css'  %}">
+	<script src="{% static 'course-select.js' %}" defer></script>
 	<title>course-selection</title>
 </head>
 <body>
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
+
 	<h1>Veldu áfanga</h1>
 
 	<div class="box" id="leftbox">  
@@ -35,18 +34,15 @@
 	</div>
 	<div class="box" id="middlebox">
 		<h1>Courses Available</h1>
-		<div class="big-container"> 
-			<ul>
-				{% for i in courses %}
-				<li> <button class="course-button">{{ i.name }} - {{ i.ects }} ECTS - {% for p in i.get_semester %}{{p.semesterid}}{% endfor %} - Undanfarar: {% for c in i.get_prerequisite %} {{ c.name }} {% endfor %}</button></li>
-				{% endfor %}
-			</ul>
+		<div class="bigContainer"> 
+			{% for i in courses %}
+			<div class="course" draggable="true">{{ i.name }} - {{ i.ects }} ECTS - </div>
+			{% endfor %}
 		</div>
 	</div>
-
 	<div class="box" id="rightbox">
 		<h1>Check</h1>
-		<div class="big-container">
+		<div class="bigContainer">
 			
 		Checking requirements:
 		{{big_req}}
