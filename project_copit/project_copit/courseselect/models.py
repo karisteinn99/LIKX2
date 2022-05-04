@@ -37,10 +37,10 @@ class Course(models.Model):
         return self.name
 
 class CourseHasPrerequisite(models.Model):
-    course_code = models.CharField(max_length=255) #loada frá skjali
+    course_code = models.CharField(max_length=255, default='test') #loada frá skjali
     prereq_course_code = models.CharField(max_length=255) #loada frá skjali
-    course_id = Course.objects.filter(course_code = course_code).values('id')[0]['id']
-    prereq_course_id = Course.objects.filter(course_code = prereq_course_code).values('id')[0]['id']
+    #course_id = Course.objects.filter(course_code = course_code).values('id')[0]['id']
+    #prereq_course_id = Course.objects.filter(course_code = prereq_course_code).values('id')[0]['id']
 
 
     #from_id = models.ForeignKey(Course, on_delete = models.CASCADE, related_name='id1') #foreign key CourseIDa
