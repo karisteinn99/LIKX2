@@ -39,7 +39,7 @@
 		<h1>Courses Available</h1>
 		<div class="bigContainer"> 
 			{% for i in courses %}
-			<div class="course" draggable="true">{{ i.name }} - {{ i.ects }} ECTS </div>
+			<div class="course" draggable="true">{{ i.name }} ({{i.course_code}}) - {{ i.ects }} ECTS </div>
 			{% endfor %}
 		</div>
 	</div>
