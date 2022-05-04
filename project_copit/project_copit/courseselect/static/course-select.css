@@ -1,10 +1,36 @@
+.navbar {
+    position: relative;
+    width: auto;
+    height: 60px;
+    background-image: url('red_image.jpg');
+    border: 1px rgb(255, 13, 0);
+    border-style: ridge;
+}
+
+.navbar a {
+    display: inline-block;
+    height: 60px;
+    font-size: larger;
+    border-right: 1px solid black;
+    padding: 0 15px;
+}
+
+body,html {
+    margin: 0;
+    padding: 0;
+}
+
+
 .course {
-    margin: 1%;
+    margin: 1.5%;
     height: fit-content;
-    width: fit-content;
+    width: auto;
     text-align: left;
+    text-indent: 1%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     border: black solid 1px;
     cursor: move;
+    background-image: linear-gradient(to right, rgb(223, 2, 2), rgb(190, 117, 0), rgb(215, 151, 54));
 }
 
 .coursebutton.dragging {
@@ -48,7 +74,7 @@ h3 {
     display: flex;
     width: auto;
     height: 200px;
-    border: 2px solid black;
+    border: 3px solid black;
     border-radius: 2px;
     top: 0;
     margin: 1% 1% 0% 10px;
@@ -60,7 +86,7 @@ h3 {
     width: 100%;
     margin: 0.5px;
     border-radius: 2px;
-    border: 1px solid red;
+    border: 1px solid rgb(168, 0, 0);
 }
 
 .bigContainer {
@@ -69,6 +95,7 @@ h3 {
     width: auto;
     height: 77%;
     margin: 47px 1%;
-    border: 2px solid black;
+    border: 3px solid black;
     border-radius: 2px;
+    display: block;
 }
