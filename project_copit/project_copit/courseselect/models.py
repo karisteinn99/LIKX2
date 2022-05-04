@@ -13,10 +13,10 @@ class Course(models.Model):
     has_prerequisite = models.IntegerField()
 
 
-    def get_course_id(course_c):
-        all_objects = Course.objects.filter(course_code=course_c)
-        print(all_objects)
-        return all_objects['id']
+    #def get_course_id(course_c):
+    #    all_objects = Course.objects.filter(course_code=course_c)
+    #    print(all_objects)
+    #    return all_objects['id']
 
 
     def get_prerequisite(self):
@@ -39,8 +39,8 @@ class Course(models.Model):
 class CourseHasPrerequisite(models.Model):
     course_code = models.CharField(max_length=255) #loada frá skjali
     prereq_course_code = models.CharField(max_length=255) #loada frá skjali
-    course_id = Course.get_course_id(course_code)
-    prereq_course_id = Course.get_course_id(prereq_course_code)
+    #course_id = Course.get_course_id(course_code)
+    #prereq_course_id = Course.get_course_id(prereq_course_code)
 
 
     #from_id = models.ForeignKey(Course, on_delete = models.CASCADE, related_name='id1') #foreign key CourseIDa
