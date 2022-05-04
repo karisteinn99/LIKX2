@@ -5,16 +5,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	{% load static %}
-    <link rel="stylesheet"  href="{%  static  'course-select.css'  %}">
+    <link rel="stylesheet"  href="{% static 'course-select.css' %}">
 	<script src="{% static 'course-select.js' %}" defer></script>
 	<title>course-selection</title>
 </head>
 <body>
-
-	<h1>Veldu áfanga</h1>
+	<div class="navbar"> 
+		<a href=".." id="logout">LOG OUT</a>
+		<a href="hmm">ABOUT US</a>
+	</div>
+	
 
 	<div class="box" id="leftbox">  
-	<h1>Course Selection</h1>
+	<h1>Calender</h1>
 	<h3>1. year</h3>
 	<div class="year-container">
 		<div class="semester"></div>
@@ -36,7 +39,7 @@
 		<h1>Courses Available</h1>
 		<div class="bigContainer"> 
 			{% for i in courses %}
-			<div class="course" draggable="true">{{ i.name }} - {{ i.ects }} ECTS - </div>
+			<div class="course" draggable="true">{{ i.name }} - {{ i.ects }} ECTS </div>
 			{% endfor %}
 		</div>
 	</div>
