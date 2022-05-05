@@ -13,10 +13,10 @@ class Course(models.Model):
     has_prerequisite = models.IntegerField()
 
     def get_prerequisite(self):
-        all_objects = CourseHasPrerequisite.objects.filter(fromid_id=self.id)
+        all_objects = CourseHasPrerequisite.objects.filter(course_id=self.id) #lika her
         prereq_list = []
         for obj in all_objects.values():
-            prereq_list.append(Course.objects.get(pk=obj['toid_id']))
+            prereq_list.append(Course.objects.get(pk=obj['prereq_id_id'])) #gæti verið að vanti _id
         return prereq_list
     
     def get_semester(self):
@@ -27,7 +27,7 @@ class Course(models.Model):
         return semester_list
 
     def __str__(self):
-        return self.name
+        return self.course_code
 
 class CourseHasPrerequisite(models.Model):
     course_id = models.ForeignKey(Course, on_delete = models.CASCADE, related_name='id1') #foreign key CourseIDa
@@ -35,15 +35,16 @@ class CourseHasPrerequisite(models.Model):
     parallel_enrollment = models.IntegerField(default=0)
 
 
-    def get_name_from_id(self):
-        all_objects = Course.objects.filter(id=self['to_id'])
-        name_list = []
-        for obj in all_objects:
-            name_list.append(obj.name)
-        return name_list
+    # def get_name_from_id(self):
+    #     all_objects = Course.objects.filter(id=self['to_id'])
+    #     name_list = []
+    #     for obj in all_objects:
+    #         name_list.append(obj.name)
+    #     return name_list
 
     def __str__(self):
-        return self.course_id
+        course = self.prereq_id
+        return course.course_code
 
 class Semesters(models.Model):
     description = models.CharField(max_length=63)

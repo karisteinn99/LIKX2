@@ -36,6 +36,7 @@ def big_check(request):
     return render(request, 'course-selection.html', context)
 
 def check_ects_requirements(course_objects):
+    '''hér gætu fleiri eininga tjékk verið t.d. kröfurnar, kalla í checks.py'''
     return count_ects(course_objects)
 
 #def check_prereq_requirements(course_objects):

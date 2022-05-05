@@ -9,9 +9,9 @@ def count_ects(selected_courses):
     count = 0
     for course in selected_courses:
         count += course.ects 
-        print(count)
+        # print(count)
     if count >= 180:
-        return "Success with % ECTS of 180".format(count)
+        return "Success with {} ECTS of 180".format(count)
     else:
         return "Total ECTS requirement not fulfilled with {} ECTS ({} ECTS missing)".format(count, 180-count)
 
