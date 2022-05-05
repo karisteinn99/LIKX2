@@ -26,7 +26,7 @@ def big_check(request):
     check_result_string += (check_ects_requirements(course_objects)) + "\n" #check ects
     print(check_result_string)
 
-    check_result_string += check_prereq(course_objects) + "\n" #prerequisites
+    check_result_string += check_prereq_requirements(course_objects) + "\n" #prerequisites
 
     #fleiri check
 
@@ -39,6 +39,6 @@ def check_ects_requirements(course_objects):
     '''hér gætu fleiri eininga tjékk verið t.d. kröfurnar, kalla í checks.py'''
     return count_ects(course_objects)
 
-#def check_prereq_requirements(course_objects):
-#    return check_prereq(course_objects)
+def check_prereq_requirements(course_objects):
+    return check_prereq(course_objects)
     
