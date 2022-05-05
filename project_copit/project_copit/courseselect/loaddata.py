@@ -31,8 +31,15 @@ prereq = [
 ]
 CourseHasPrerequisite.objects.bulk_create(prereq)
 
+tmp_prereq_data=pd.read_csv('prerequisite_info.csv',sep=';')
 prereq_list=[]
 for row in tmp_prereq_data['id']:
+    course_codeinn = tmp_prereq_data.loc[row]['CourseCode']
+    prereq_codeinn = tmp_prereq_data.loc[row]['Prerequisite']
+    course_objects = Course.objects.filter(course_code = course_codeinn)
+    prereq_objects = Course.objects.filter(course_code = prereq_codeinn) 
+
+
     prereq_list.append(CourseHasPrerequisite(course_id=(Course.objects.filter(course_code = tmp_prereq_data.loc[row-1]['CourseCode']))[0],prereq_id= (Course.objects.filter(course_code = tmp_prereq_data.loc[row-1]['Prerequisite']))[0],parallel_enrollment=tmp_prereq_data.loc[row-1]['ParallelEnrollment']))
     print(prereq_list)
 
