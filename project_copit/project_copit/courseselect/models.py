@@ -37,17 +37,13 @@ class Course(models.Model):
         return self.name
 
 class CourseHasPrerequisite(models.Model):
-    course_code = models.CharField(max_length=255, default='test') #loada frá skjali
-    prereq_course_code = models.CharField(max_length=255) #loada frá skjali
-
-    #course_id = Course.objects.filter(course_code = course_code)[0].id
-    #prereq_course_id = Course.objects.filter(course_code = prereq_course_code)[0].id
-
-
+    course_code = models.CharField(max_length=255)
+    prereq_course_code = models.CharField(max_length=255)
     course_id = models.ForeignKey(Course, on_delete = models.CASCADE, related_name='id1') #foreign key CourseIDa
     prereq_id = models.ForeignKey(Course, on_delete = models.CASCADE, related_name='id2') #foreign key CourseID
 
-
+ #course_id = Course.objects.filter(course_code = course_code)[0].id
+    #prereq_course_id = Course.objects.filter(course_code = prereq_course_code)[0].id
 
     def get_name_from_id(self):
         all_objects = Course.objects.filter(id=self['to_id'])
@@ -67,11 +63,11 @@ class Semesters(models.Model):
     
 
 class CourseSemester(models.Model):
-    courseid = models.ForeignKey(Course, on_delete = models.CASCADE) #foreign key CourseID
+    course_id = models.ForeignKey(Course, on_delete = models.CASCADE) #foreign key CourseID
     semesterid = models.ForeignKey(Semesters, on_delete = models.CASCADE)
 
     def __str__(self):
-        return self.courseid
+        return self.course_id
 
 #class Label(models.Model):
 #    label_name = models.CharField()
