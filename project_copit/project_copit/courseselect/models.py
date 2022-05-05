@@ -30,7 +30,6 @@ class Course(models.Model):
         return self.name
 
 class CourseHasPrerequisite(models.Model):
-    prereq_course_code = models.CharField(max_length=255)
     course_id = models.ForeignKey(Course, on_delete = models.CASCADE, related_name='id1') #foreign key CourseIDa
     prereq_id = models.ForeignKey(Course, on_delete = models.CASCADE, related_name='id2') #foreign key CourseID
     parallel_enrollment = models.IntegerField(default=0)
