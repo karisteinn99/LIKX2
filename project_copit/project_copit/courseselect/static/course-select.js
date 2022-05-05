@@ -48,7 +48,15 @@ semesters.forEach(semester => {
       } else {
         return closest
       }
-    }, { offset: Number.POSITIVE_INFINITY }).element
+    }, { offset: Number.NEGATIVE_INFINITY }).element
   }
 
+// this changes description text (course.description outer html) to the correct format 
+const descriptions = document.querySelectorAll('.destringify')
+descriptions.forEach(description => {
+  string_1 = description.outerHTML.replaceAll('&lt;', '<')
+  string_2 = string_1.replaceAll('&gt;', '>')
+  string_3 = string_2.replaceAll('&amp;nbsp;', ' ')
+  description.outerHTML = string_3
+})
 

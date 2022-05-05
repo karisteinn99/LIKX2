@@ -1,3 +1,22 @@
+.info {
+    height: auto;
+    width: 10%;
+    font-weight: bolder;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: brown;
+}
+
+.info:hover {
+    background-color: rgb(143, 86, 86);
+}
+
+.course p {
+    margin: 1%;
+    width: 90%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
 .navbar {
     position: relative;
     width: auto;
@@ -11,8 +30,19 @@
     display: inline-block;
     height: 60px;
     font-size: larger;
+    font-weight: bold;
     border-right: 1px solid black;
+    border-left: 1px solid black;
     padding: 0 15px;
+    right: 0;
+    line-height: 55px;
+    color: black;
+    text-decoration: wavy;
+}
+
+.navbar a:hover {
+    background-color: grey;
+    border-radius: 8px;
 }
 
 body,html {
@@ -22,19 +52,20 @@ body,html {
 
 
 .course {
-    margin: 1.5%;
+    position: relative;
+    display: flex;
     height: fit-content;
     width: auto;
     text-align: left;
-    text-indent: 1%;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 1%;
     border: black solid 1px;
+    border-radius: 2px;
     cursor: move;
     background-image: linear-gradient(to right, rgb(223, 2, 2), rgb(190, 117, 0), rgb(215, 151, 54));
 }
 
 .coursebutton.dragging {
-    opacity: .5;
+    opacity: 5;
 }
 
 h1 {
@@ -87,6 +118,8 @@ h3 {
     margin: 0.5px;
     border-radius: 2px;
     border: 1px solid rgb(168, 0, 0);
+    overflow-y: scroll;
+    background-color: rgb(255, 254, 235);
 }
 
 .bigContainer {
@@ -98,4 +131,24 @@ h3 {
     border: 3px solid black;
     border-radius: 2px;
     display: block;
+    overflow-y: scroll;
+    background-color: rgb(255, 254, 235);
 }
+
+#bg {
+    position: fixed; 
+    top: -50%; 
+    left: -50%; 
+    width: 200%; 
+    height: 200%;
+  }
+  #bg img {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    margin: auto; 
+    min-width: 50%;
+    min-height: 50%;
+  }
