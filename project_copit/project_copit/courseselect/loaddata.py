@@ -1,5 +1,6 @@
+from numpy import empty
 import pandas as pd
-from models import Course, CourseHasPrerequisite
+from courseselect.models import Course, CourseHasPrerequisite
 
 tmp_data=pd.read_csv('course_info.csv',sep=';')
 
@@ -23,8 +24,8 @@ Course.objects.bulk_create(courses)
 tmp_prereq_data=pd.read_csv('prerequisite_info.csv',sep=';')
 prereq = [
     CourseHasPrerequisite(
-        course_id = (Course.objects.filter(course_code = tmp_prereq_data.loc[row]['CourseCode']))[0],
-        prereq_id = (Course.objects.filter(course_code = tmp_prereq_data.loc[row]['Prerequisite']))[0],
+        course_id = Course.objects.filter(course_code = tmp_prereq_data.loc[row-1]['CourseCode'])[0],
+        prereq_id = Course.objects.filter(course_code = tmp_prereq_data.loc[row-1]['Prerequisite'])[0],
         parallel_enrollment = tmp_prereq_data.loc[row-1]['ParallelEnrollment'],
     )
     for row in tmp_prereq_data['id']
@@ -35,13 +36,20 @@ tmp_prereq_data=pd.read_csv('prerequisite_info.csv',sep=';')
 prereq_list=[]
 for row in tmp_prereq_data['id']:
     course_codeinn = tmp_prereq_data.loc[row]['CourseCode']
+    print(row)#
+    print(course_codeinn)#
     prereq_codeinn = tmp_prereq_data.loc[row]['Prerequisite']
-    course_objects = Course.objects.filter(course_code = course_codeinn)
-    prereq_objects = Course.objects.filter(course_code = prereq_codeinn) 
+    print(prereq_codeinn)#
+    course_object = Course.objects.filter(course_code = course_codeinn)[0]
+    print(course_object)#
+    prereq_object = Course.objects.filter(course_code = prereq_codeinn)[0]
+    print(prereq_object)#
+
+    undanfara_objectinn = CourseHasPrerequisite(course_id=course_object, prereq_id=prereq_object,parallel_enrollment=tmp_prereq_data.loc[row-1]['ParallelEnrollment'])
+
+    prereq_list.append(undanfara_objectinn)
 
 
-    prereq_list.append(CourseHasPrerequisite(course_id=(Course.objects.filter(course_code = tmp_prereq_data.loc[row-1]['CourseCode']))[0],prereq_id= (Course.objects.filter(course_code = tmp_prereq_data.loc[row-1]['Prerequisite']))[0],parallel_enrollment=tmp_prereq_data.loc[row-1]['ParallelEnrollment']))
-    print(prereq_list)
 
     
 
