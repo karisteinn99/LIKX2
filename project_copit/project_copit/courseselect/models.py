@@ -41,9 +41,8 @@ class CourseHasPrerequisite(models.Model):
     prereq_course_code = models.CharField(max_length=255)
     course_id = models.ForeignKey(Course, on_delete = models.CASCADE, related_name='id1') #foreign key CourseIDa
     prereq_id = models.ForeignKey(Course, on_delete = models.CASCADE, related_name='id2') #foreign key CourseID
+    parallel_enrollment = models.IntegerField()
 
- #course_id = Course.objects.filter(course_code = course_code)[0].id
-    #prereq_course_id = Course.objects.filter(course_code = prereq_course_code)[0].id
 
     def get_name_from_id(self):
         all_objects = Course.objects.filter(id=self['to_id'])
@@ -53,7 +52,7 @@ class CourseHasPrerequisite(models.Model):
         return name_list
 
     def __str__(self):
-        return self.name
+        return self.course_id
 
 class Semesters(models.Model):
     description = models.CharField(max_length=63)

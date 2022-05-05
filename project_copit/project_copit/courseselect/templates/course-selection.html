@@ -10,10 +10,16 @@
 	<title>course-selection</title>
 </head>
 <body>
+	<div id="bg">
+        <img src="{% static 'white_paper.jpg' %}" alt="backround_image">
+    </div>
+
 	<div class="navbar"> 
 		<a href=".." id="logout">LOG OUT</a>
 		<a href="hmm">ABOUT US</a>
 	</div>
+
+	
 	
 
 	<div class="box" id="leftbox">  
@@ -39,7 +45,7 @@
 		<h1>Courses Available</h1>
 		<div class="bigContainer"> 
 			{% for i in courses %}
-			<div class="course" draggable="true">{{ i.name }} ({{i.course_code}}) - {{ i.ects }} ECTS </div>
+			<div class="course" draggable="true"> <p>{{ i.name }} ({{i.course_code}}) - {{ i.ects }} ECTS </p><button class="info">i</button> </div>
 			{% endfor %}
 		</div>
 	</div>
@@ -49,10 +55,15 @@
 			
 		Checking requirements:
 		{{big_req}}
+
+		{% for course in courses %}
+			{% if course.teaching_language == 'Enska' %}
+				<div class="destringify">{{course.description}}</div>
+			{% endif%}
+		{% endfor %}
 		
 		</div>
 	</div>
-
 
 </body>
 </html>
