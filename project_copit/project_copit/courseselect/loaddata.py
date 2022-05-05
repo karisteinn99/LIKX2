@@ -1,5 +1,5 @@
 import pandas as pd
-from .models import Course
+from .models import Course, CourseHasPrerequisite
 
 tmp_data=pd.read_csv('course_info.csv',sep=';')
 
@@ -18,6 +18,19 @@ courses = [
     for row in tmp_data['id']
 ]
 Course.objects.bulk_create(courses)
+
+# virkar ekki :( fæ list index out of range
+tmp_prereq_data=pd.read_csv('prerequisite_info.csv',sep=';')
+prereq = [
+    CourseHasPrerequisite(
+        course_id = (Course.objects.filter(course_code = tmp_prereq_data.loc[row-1]['CourseCode']))[0],
+        prereq_id = (Course.objects.filter(course_code = tmp_prereq_data.loc[row-1]['Prerequisite']))[0],
+        parallel_enrollment = tmp_prereq_data.loc[row-1]['ParallelEnrollment'],
+    )
+    for row in tmp_prereq_data['id']
+]
+CourseHasPrerequisite.objects.bulk_create(prereq)
+
 
 
 
