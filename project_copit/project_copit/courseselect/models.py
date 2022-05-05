@@ -12,13 +12,6 @@ class Course(models.Model):
     teaching_language = models.CharField(max_length=255)
     has_prerequisite = models.IntegerField()
 
-
-    #def get_course_id(course_c):
-    #    all_objects = Course.objects.filter(course_code=course_c)
-    #    print(all_objects)
-    #    return all_objects['id']
-
-
     def get_prerequisite(self):
         all_objects = CourseHasPrerequisite.objects.filter(fromid_id=self.id)
         prereq_list = []
