@@ -35,23 +35,25 @@ def check_prereq(selected_courses): #listi af objects sem eru valin(eftir önnum
 
 
 def check_prereq_by_semester(selected_courses_by_semester): # grf dict = {önn1:queryset, önn2:queryset, önn3:queryset...}
+    '''Fer í hverja önn og athugar hvort undanfaraskilyrðin séu í lagi fyrir annirnar á undan, fyrir hvern áfanga'''
     for semester in selected_courses_by_semester.keys():
-        for course in selected_courses_by_semester[semester]:
-            prereq_queryset = course.get_prerequisite()
-            for prereq in prereq_queryset:
-                if semester==1:
-                    pass
-                elif prereq not in selected_courses_by_semester[semester-1]:
-                    is_okay = False
-
-                    #
-                
-
-    #fara fyrir hverja önn í values og fá undanfara, athuga í annir með lægri tölu en i, hvort prereq áfanginn sé þar
-
-    return "hmm"
+        if semester == 1:
+            pass
+        else:
+            for course in selected_courses_by_semester[semester]:
+                prereq_queryset = course.get_prerequisite()
+                for prereq in prereq_queryset:
+                    #bæta við parallel
+                    for counter in range(semester,2):
+                        if prereq not in selected_courses_by_semester[counter-1]:
+                            is_okay = False
+                            #missing_list.append(prereq.course_code)
+                                
+                            ret_str += "Semester {} missing {} because of {} on semester {}\n".format(counter, prereq, course, semester)
+    return ret_str
 
 def check_correct_semester(selected_courses):
+    '''Checks for each semester in choice, if that course is taught on that semester'''
     for course in selected_courses:
         ''
     return ''

@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from courseselect.checks import count_ects, check_prereq
+from project_copit.courseselect.checks import check_prereq_by_semester
 from .models import Course
 from .models import CourseHasPrerequisite
 from .models import CourseSemester
@@ -39,5 +40,5 @@ def check_ects_requirements(course_objects):
     return count_ects(course_objects)
 
 def check_prereq_requirements(course_objects):
-    return check_prereq(course_objects)
+    return check_prereq_by_semester(course_objects)
     
