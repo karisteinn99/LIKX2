@@ -4,8 +4,8 @@ from .models import Course
 from .models import CourseHasPrerequisite
 
 def count_ects(selected_courses):
-    print('inní count_ects')
-    print(selected_courses)
+    #print('inní count_ects')
+    #print(selected_courses)
     count = 0
     for course in selected_courses:
         count += course.ects 
@@ -36,6 +36,7 @@ def check_prereq(selected_courses): #listi af objects sem eru valin(eftir önnum
 
 def check_prereq_by_semester(selected_courses_by_semester): # grf dict = {önn1:queryset, önn2:queryset, önn3:queryset...}
     '''Fer í hverja önn og athugar hvort undanfaraskilyrðin séu í lagi fyrir annirnar á undan, fyrir hvern áfanga'''
+    print('inní check_prereq_by_semester')
     for semester in selected_courses_by_semester.keys():
         if semester == 1:
             pass
