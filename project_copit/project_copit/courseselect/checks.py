@@ -35,6 +35,18 @@ def check_prereq(selected_courses): #listi af objects sem eru valin(eftir önnum
 
 
 def check_prereq_by_semester(selected_courses_by_semester): # grf dict = {önn1:queryset, önn2:queryset, önn3:queryset...}
+    for semester in selected_courses_by_semester.keys():
+        for course in selected_courses_by_semester[semester]:
+            prereq_queryset = course.get_prerequisite()
+            for prereq in prereq_queryset:
+                if semester==1:
+                    pass
+                elif prereq not in selected_courses_by_semester[semester-1]:
+                    is_okay = False
+
+                    #
+                
+
     #fara fyrir hverja önn í values og fá undanfara, athuga í annir með lægri tölu en i, hvort prereq áfanginn sé þar
 
     return "hmm"
