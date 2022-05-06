@@ -19,9 +19,6 @@
 		<a href="hmm">ABOUT US</a>
 	</div>
 
-	
-	
-
 	<div class="box" id="leftbox">  
 	<h1>Calendar</h1>
 	<h3>1. year</h3>
@@ -43,9 +40,11 @@
 	</div>
 	<div class="box" id="middlebox">
 		<h1>Courses Available</h1>
-		<div class="bigContainer"> 
-			{% for i in courses %}
-			<div class="course" draggable="true"> <p>{{ i.name }} ({{i.course_code}}) - {{ i.ects }} ECTS </p><button class="info">i</button> </div>
+		<div class="bigContainer">
+			{% for course in courses %}
+			<div class="course" draggable="true"> <p>{{ course.name }} ({{course.course_code}}) - {{ course.ects }} ECTS </p><button class="infoButton_open" onclick='openInfo("{{course.id}}")'>i</button> 
+				<div class="infoPopup" id="{{course.id}}"><button class="infoButton_close" onclick='closeInfo("{{course.id}}")'>X</button><div class="destringify">{{course.description}}</div></div>
+			</div>
 			{% endfor %}
 		</div>
 	</div>
@@ -64,6 +63,5 @@
 		
 		</div>
 	</div>
-
 </body>
 </html>

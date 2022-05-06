@@ -54,7 +54,8 @@
 		<div class="bigContainer">
 			
 		Checking requirements:
-		{{big_req}}
+		{% for req in big_req %}
+		{{ req }}
 
 		{% endfor %}
 		
