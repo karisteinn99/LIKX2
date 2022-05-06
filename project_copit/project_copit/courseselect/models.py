@@ -34,14 +34,6 @@ class CourseHasPrerequisite(models.Model):
     prereq_id = models.ForeignKey(Course, on_delete = models.CASCADE, related_name='id2') #foreign key CourseID
     parallel_enrollment = models.IntegerField(default=0)
 
-
-    # def get_name_from_id(self):
-    #     all_objects = Course.objects.filter(id=self['to_id'])
-    #     name_list = []
-    #     for obj in all_objects:
-    #         name_list.append(obj.name)
-    #     return name_list
-
     def __str__(self):
         course = self.prereq_id
         return course.course_code
@@ -68,15 +60,22 @@ class HeadRequirements(models.Model):
     def __str__(self):
         return self.title
 
-class RequiredCourses(models.Model):
-    course_id = models.ForeignKey(Course, on_delete = models.CASCADE)
-    head_req_id = models.ForeignKey(HeadRequirements, on_delete = models.CASCADE)
+class Label(models.Model):
+    label_name = models.CharField(max_length=255)   
 
     def __str__(self):
-        return (self.course_id, self.head_req_id)
+        return self.label_name
 
-#class Label(models.Model):
-#    label_name = models.CharField()
+class CourseHasLabel(models.Model):
+    course_id = models.ForeignKey(Course, on_delete=models.CASCADE)
+    label_id = models.ForeignKey(Label, on_delete=models.CASCADE)
 
-#    def __str__(self):
-#        return self.label_name
+
+class SubRequirements(models.Model):
+    type = models.CharField(max_length=255)
+    head_req_id = models.ForeignKey(HeadRequirements, on_delete = models.CASCADE)
+    quantity = models.IntegerField()
+    label_id = models.ForeignKey(Label, on_delete = models.CASCADE)
+
+    # def __str__(self):
+    #     return (self.course_id, self.head_req_id)
