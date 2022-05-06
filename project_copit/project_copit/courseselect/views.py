@@ -20,20 +20,19 @@ def course_selection(request):
     return render(request, 'course-selection.html',context)
 
 def big_check(request):
-    check_result_string = "" #stór strengur
+    check_result_list = [] 
     course_objects = Course.objects.all() #þetta verður væntanlega valið hjá user
     print(course_objects)
-    check_result_string += (check_ects_requirements(course_objects)) + "\n" #check ects
-    print(check_result_string)
+    check_result_list.append(check_ects_requirements(course_objects)) #check ects
+    print(check_result_list)
 
-    check_result_string += check_prereq_requirements(course_objects) + "\n" #prerequisites
+    check_result_list.append(check_prereq_requirements(course_objects)) #prerequisites
 
     #fleiri check
 
-    context = {'big_req':check_result_string}
+    context = {'big_req':check_result_list}
     print(context)
-
-    return render(request, 'course-selection.html', context)
+    return render(request, 'check-test.html', context)
 
 def check_ects_requirements(course_objects):
     '''hér gætu fleiri eininga tjékk verið t.d. kröfurnar, kalla í checks.py'''

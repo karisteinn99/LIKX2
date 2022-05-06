@@ -16,7 +16,7 @@ def count_ects(selected_courses):
         return "Total ECTS requirement not fulfilled with {} ECTS ({} ECTS missing)".format(count, 180-count)
 
 
-def check_prereq(selected_courses): #listi af objects sem eru valin
+def check_prereq(selected_courses): #listi af objects sem eru valin(eftir önnum??) g.r.f. dictionary {önn:objects,önn:objects}
     '''Checks if prerequisites are anywhere in selected courses'''
     is_okay = True
     false_list = []
@@ -34,7 +34,7 @@ def check_prereq(selected_courses): #listi af objects sem eru valin
         return "Prerequisites not okay! Missing courses are: {}".format(false_list) #vantar að hafa nöfnin sem output ekki objects
 
 
-def check_prereq_by_semester(selected_courses_by_semester): # er þetta dict fyrir hverja önn eða
+def check_prereq_by_semester(selected_courses_by_semester): # grf dict = {önn1:queryset, önn2:queryset, önn3:queryset...}
     #fara fyrir hverja önn í values og fá undanfara, athuga í annir með lægri tölu en i, hvort prereq áfanginn sé þar
 
     return "hmm"
