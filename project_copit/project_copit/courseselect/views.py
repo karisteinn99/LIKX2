@@ -22,7 +22,7 @@ def course_selection(request):
 
 def big_check(request):
     check_result_list = [] 
-    course_objects = Course.objects.all() #þetta verður væntanlega valið hjá user
+    course_objects = Course.objects.all() #þetta verður væntanlega valið hjá user - BREYTA Í DICT
     print(course_objects)
     check_result_list.append(check_ects_requirements(course_objects)) #check ects
     print(check_result_list)
