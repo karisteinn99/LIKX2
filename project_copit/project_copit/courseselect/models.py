@@ -60,6 +60,21 @@ class CourseSemester(models.Model):
     def __str__(self):
         return self.course_id
 
+
+
+class HeadRequirements(models.Model):
+    title = models.CharField(max_length=255) 
+
+    def __str__(self):
+        return self.title
+
+class RequiredCourses(models.Model):
+    course_id = models.ForeignKey(Course, on_delete = models.CASCADE)
+    head_req_id = models.ForeignKey(HeadRequirements, on_delete = models.CASCADE)
+
+    def __str__(self):
+        return (self.course_id, self.head_req_id)
+
 #class Label(models.Model):
 #    label_name = models.CharField()
 

@@ -60,3 +60,18 @@ descriptions.forEach(description => {
   description.outerHTML = string_3
 })
 
+// info popup window
+function openInfo(id) {
+  document.getElementById(id).style.display = "block";
+  courses.forEach(course => {
+    course.setAttribute("draggable", false)
+  })
+}
+
+function closeInfo(id) {
+  document.getElementById(id).style.display = "none";
+  courses.forEach(course => {
+    course.setAttribute("draggable", true)
+  })
+}
+
