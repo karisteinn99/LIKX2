@@ -3,17 +3,23 @@ from django.db import models
 from .models import Course
 from .models import CourseHasPrerequisite
 
-def count_ects(selected_courses):
-    #print('inní count_ects')
-    #print(selected_courses)
+# def count_ects(selected_courses):
+#     #print('inní count_ects')
+#     #print(selected_courses)
+#     count = 0
+#     for course in selected_courses:
+#         count += course.ects 
+#         # print(count)
+#     if count >= 180:
+#         return "Success with {} ECTS of 180".format(count)
+#     else:
+#         return "Total ECTS requirement not fulfilled with {} ECTS ({} ECTS missing)".format(count, 180-count)
+
+def count_ects(objects):
     count = 0
-    for course in selected_courses:
-        count += course.ects 
-        # print(count)
-    if count >= 180:
-        return "Success with {} ECTS of 180".format(count)
-    else:
-        return "Total ECTS requirement not fulfilled with {} ECTS ({} ECTS missing)".format(count, 180-count)
+    for course in objects:
+        count += course.ects
+    return count
 
 
 def check_prereq(selected_courses): #listi af objects sem eru valin(eftir önnum??) g.r.f. dictionary {önn:objects,önn:objects}

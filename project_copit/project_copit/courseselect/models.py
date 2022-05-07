@@ -1,3 +1,4 @@
+import re
 from django.db import models
 
 # Create your models here.
@@ -25,6 +26,7 @@ class Course(models.Model):
         for obj in all_objects:
             semester_list.append(obj)
         return semester_list
+
 
     def __str__(self):
         return self.course_code
@@ -58,7 +60,7 @@ class HeadRequirements(models.Model):
     title = models.CharField(max_length=255) 
 
     def __str__(self):
-        return self.title
+        return str(self.id)
 
 class Label(models.Model):
     label_name = models.CharField(max_length=255)   
@@ -77,5 +79,11 @@ class SubRequirements(models.Model):
     quantity = models.IntegerField()
     label_id = models.ForeignKey(Label, on_delete = models.CASCADE)
 
-    # def __str__(self):
-    #     return (self.course_id, self.head_req_id)
+    def get_courses_with_label(self):
+        print("inní get_courses_with_label")
+        course_has_label_objects = CourseHasLabel.objects.filter(label_id_id = self.label_id)
+        course_objects = Course.objects.filter(pk__in = course_has_label_objects.values_list)
+        return course_objects
+
+    def __str__(self):
+        return str(self.id)
