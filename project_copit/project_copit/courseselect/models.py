@@ -80,11 +80,8 @@ class SubRequirements(models.Model):
     label_id = models.ForeignKey(Label, on_delete = models.CASCADE)
 
     def get_courses_with_label(self):
-        #print("inní get_courses_with_label")
         course_has_label_objects = CourseHasLabel.objects.all().filter(label_id_id = self.label_id)
-        #print("course_has_label_objects={}".format(course_has_label_objects))
         course_objects = Course.objects.all().filter(pk__in = course_has_label_objects.values_list('course_id_id'))
-        #print("course_objects={}".format(course_objects))
         return course_objects
 
     def __str__(self):

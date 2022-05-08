@@ -53,9 +53,13 @@
 		<h1>Check</h1>
 		<div class="bigContainer">
 			
-		Checking requirements:
-		{% for head_requirement in requirements %} {{ head_requirement }} {% endfor %}
-		
+		Checking requirements
+		<br>
+		<br>{% for head_requirement,sub_requirements in requirements.items %} 
+		<br>{{ head_requirement.title }}:
+		<br>{% for sub_requirement,result in sub_requirements.items %}
+		<br>{{ sub_requirement.label_id }}: {{ result }}{% endfor %} 
+		{% endfor %}
 		
 		</div>
 	</div>
