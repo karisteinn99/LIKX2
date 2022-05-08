@@ -80,3 +80,8 @@ def check_correct_semester(selected_courses):
     for course in selected_courses:
         ''
     return ''
+
+def check_course_types(selection_objects):
+    '''Checks how many 3V courses are on each semester and 12V, returns results'''
+
+    return "bla"

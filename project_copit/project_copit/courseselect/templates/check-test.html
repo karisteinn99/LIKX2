@@ -55,11 +55,14 @@
 			
 		Checking requirements
 		<br>
-		<br>{% for head_requirement,sub_requirements in requirements.items %} 
+		<br>{% for head_requirement,sub_requirements in head_requirements.items %} 
 		<br>{{ head_requirement.title }}:
 		<br>{% for sub_requirement,result in sub_requirements.items %}
 		<br>{{ sub_requirement.label_id }}: {{ result }}{% endfor %} 
 		{% endfor %}
+
+		<br>{% for requirement,result in other_requirements %}
+		<br>{{ result }}
 		
 		</div>
 	</div>

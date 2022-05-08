@@ -2,7 +2,7 @@ from multiprocessing import context
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from courseselect.checks import count_ects, check_prerequisite_by_semester, check_head_requirements
+from courseselect.checks import count_ects, check_prerequisite_by_semester, check_head_requirements, check_course_types, check_correct_semester
 from .models import Course, HeadRequirements, SubRequirements, CourseHasLabel, CourseHasPrerequisite, CourseSemester, Semesters
 
 def loginPage(request):
@@ -17,11 +17,13 @@ def course_selection(request):
     return render(request, 'course-selection.html',context)
 
 def big_check(request):
-
+    other_requirements_result_dict = {}
     selection_objects = Course.objects.all() #BREYTA SVO Í ACTUAL USER INPUTTIÐ
-    result_dict = check_head_requirements(selection_objects)
-    #result_dict["prerequisite check"] = check_prerequisite_by_semester(selection_objects) ÞEGAR GET FENGIÐ SKIPT EFTIR ÖNNUM
-    context = {'requirements': result_dict}
+    head_requirements_result_dict = check_head_requirements(selection_objects)
+    other_requirements_result_dict["prerequisite check"] = check_prerequisite_by_semester(selection_objects) #ÞEGAR GET FENGIÐ SKIPT EFTIR ÖNNUM
+    other_requirements_result_dict["type check"] = check_course_types(selection_objects) #hvort það sé rétt magn af 12V og 3V
+    other_requirements_result_dict["semester check"] = check_correct_semester(selection_objects) #hvort áfangar séu kenndir á völdu önnunum
+    context = {'head_requirements': head_requirements_result_dict, 'other_requirements': other_requirements_result_dict}
     return render(request,'check-test.html',context)
 
     
