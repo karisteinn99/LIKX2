@@ -1,28 +1,30 @@
+from fnmatch import fnmatch
 from multiprocessing import context
 from django.shortcuts import render
 from django.http import HttpResponse
 
 from courseselect.checks import count_ects, check_prerequisite_by_semester, check_head_requirements, check_course_types, check_correct_semester
 from .models import Course, HeadRequirements, SubRequirements, CourseHasLabel, CourseHasPrerequisite, CourseSemester, Semesters
-from .forms import CourseForm
 
+# form test og course selection smiðað saman
+def course_selection(request):
+    data = request.POST.items()
+    name_dict = {}
+    for name in data:
+        name_dict[name[0]] = name[1]
+    name_dict.pop('csrfmiddlewaretoken')
+    print(name_dict)
 
-#testa hluti hérna
-def form_test(request):
-    form = CourseForm()
-    context = {'form': form}
-    return render(request, 'form_test.html', context)
-    
+    course_objects = Course.objects.all()
+    context = {'courses': course_objects}
+    return render(request, 'course-selection.html', context)
+
 def loginPage(request):
     return render(request, 'loginPage.html')
 
 def homepage(request):
     return render(request, 'homepage.html')
 
-def course_selection(request):
-    course_objects = Course.objects.all()
-    context = {'courses': course_objects}
-    return render(request, 'course-selection.html', context)
 
 def big_check(request):
     other_requirements_result_dict = {}

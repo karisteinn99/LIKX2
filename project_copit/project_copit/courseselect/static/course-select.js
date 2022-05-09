@@ -2,6 +2,7 @@ const courses = document.querySelectorAll('.course')
 const semesters = document.querySelectorAll('.semester')
 const courseSelection = document.querySelectorAll('.bigContainer')
 
+// draggable elements and stuff around that
 courses.forEach(course => {
     course.addEventListener('dragstart', () => {
         course.classList.add('dragging')
@@ -23,6 +24,7 @@ semesters.forEach(semester => {
       }
     })
   })
+
 
   courseSelection.forEach(bigContainer => {
     bigContainer.addEventListener('dragover', e => {
@@ -74,4 +76,21 @@ function closeInfo(id) {
     course.setAttribute("draggable", true)
   })
 }
+
+function form_function() {
+  i = 1
+  semesters.forEach (semester => {
+    s_value = ''
+    semester.childNodes.forEach(course => {
+      course_id = course.getAttribute('class').split(' ')[1]
+      s_value = s_value + course_id + ' ' 
+      console.log(s_value)
+      form_input = document.getElementById('semester-'+ i)
+      form_input.setAttribute('value', s_value)
+    })
+    console.log(s_value)
+    i = i + 1
+  })
+}
+
 
