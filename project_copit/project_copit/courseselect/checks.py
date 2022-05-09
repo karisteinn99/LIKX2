@@ -1,6 +1,7 @@
 
 from django.db import models
-from .models import Course, CourseHasLabel, CourseHasPrerequisite, HeadRequirements, SubRequirements
+from django.http import QueryDict
+from .models import Course, CourseHasLabel, CourseHasPrerequisite, HeadRequirements, Semesters, SubRequirements
 
 
 def check_head_requirements(selection_objects):
@@ -9,9 +10,9 @@ def check_head_requirements(selection_objects):
         then compare ects or objects
         Returns dictionary with results for every headreq and subreq{headreqid:{subreqid:True/False,subreqid:True/False},headreqid:{...}}'''
     result_dict = {}
-    selection_objects = Course.objects.all() #BREYTA SVO Í ACTUAL USER INPUTTIÐ
+    #selection_objects = Course.objects.all() #BREYTA SVO Í ACTUAL USER INPUTTIÐ
     for head_requirement in HeadRequirements.objects.all():
-        result_dict[head_requirement] ={} 
+        result_dict[head_requirement] = {} 
         for sub_requirement in SubRequirements.objects.all():
             if head_requirement.id == sub_requirement.head_req_id_id:
                 labeled_queryset = sub_requirement.get_courses_with_label() #returns Course objects
@@ -19,7 +20,7 @@ def check_head_requirements(selection_objects):
                 labeled_selection = selection_objects.filter(pk__in = labeled_id_list) #filtera selectionið með labelinu skila Course objects
                 if sub_requirement.quantity == -1: #selectionið þarf að innihalda öll objects sem finnast með þessu labeli
                     if labeled_selection.union(labeled_queryset) == labeled_selection:
-                        result_dict[head_requirement][sub_requirement]="Fulfilled" #fæ villu þegar ég læt skila bara head_requirement og sub_requirement, væri betra samt
+                        result_dict[head_requirement][sub_requirement]="Fulfilled" 
                     else:
                         result_dict[head_requirement][sub_requirement]="Not fulfilled"
                 else: #bera saman selection og labeled queryset einingarnar mv quantity
@@ -53,6 +54,21 @@ def check_prereq(selected_courses): #listi af objects sem eru valin(eftir önnum
         return "Prerequisites okay!"
     else:
         return "Prerequisites not okay! Missing courses are: {}".format(false_list) #vantar að hafa nöfnin sem output ekki objects
+
+def change_dictionary(dict):
+    ret_dict = {}
+    #dict.pop('csrfmiddlewaretoken')
+    for semester,courses in dict.items():
+        old_object = Course.objects.none()
+        for course_id in courses.split():
+            course_object = Course.objects.filter(id = course_id)
+            new_queryset = course_object.union(old_object)
+            old_object = course_object
+            #object_list.append(course_object)
+            ret_dict[semester] =  new_queryset
+    print(ret_dict)
+    return ret_dict
+
 
 
 # def check_prerequisite_by_semester(selected_courses_by_semester): # grf dict = {önn1:queryset, önn2:queryset, önn3:queryset...}
