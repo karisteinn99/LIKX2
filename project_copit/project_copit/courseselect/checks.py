@@ -11,7 +11,7 @@ def check_head_requirements(selection_objects):
     result_dict = {}
     selection_objects = Course.objects.all() #BREYTA SVO Í ACTUAL USER INPUTTIÐ
     for head_requirement in HeadRequirements.objects.all():
-        result_dict[head_requirement] ={} #
+        result_dict[head_requirement] ={} 
         for sub_requirement in SubRequirements.objects.all():
             if head_requirement.id == sub_requirement.head_req_id_id:
                 labeled_queryset = sub_requirement.get_courses_with_label() #returns Course objects
