@@ -5,7 +5,15 @@ from django.http import HttpResponse
 from courseselect.checks import count_ects, check_prereq
 from courseselect.checks import check_prereq_by_semester
 from .models import Course, HeadRequirements, SubRequirements, CourseHasLabel, CourseHasPrerequisite, CourseSemester, Semesters
+from .forms import CourseForm
 
+
+#testa hluti hérna
+def form_test(request):
+    form = CourseForm()
+    context = {'form': form}
+    return render(request, 'form_test.html', context)
+    
 def loginPage(request):
     return render(request, 'loginPage.html')
 
@@ -15,7 +23,7 @@ def homepage(request):
 def course_selection(request):
     course_objects = Course.objects.all()
     context = {'courses': course_objects}
-    return render(request, 'course-selection.html',context)
+    return render(request, 'course-selection.html', context)
 
 def big_check(request):
     '''For each HeadRequirement id, goes to SubRequirements, finds corresponding quantity and label_id, 
