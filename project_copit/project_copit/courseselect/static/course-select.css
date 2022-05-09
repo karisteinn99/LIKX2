@@ -1,3 +1,18 @@
+.CHECK#form-function {
+    right: 400px ;
+}
+
+.CHECK {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    font: bold large;
+    border: 3px black solid;
+    border-radius: 5px;
+    right: 470px;
+    top: 100px;
+}
+
 .infoPopup { 
     display: none;
     position: fixed;
