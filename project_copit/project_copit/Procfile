@@ -1,1 +1,1 @@
-web: gunicorn project_copit.wsgi
+web: gunicorn project_copit.wsgi --log-file -
