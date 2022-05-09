@@ -12,7 +12,7 @@ def course_selection(request):
     name_dict = {}
     for name in data:
         name_dict[name[0]] = name[1]
-    name_dict.pop('csrfmiddlewaretoken')
+    # name_dict.pop('csrfmiddlewaretoken')
     print(name_dict)
 
     course_objects = Course.objects.all()
