@@ -1,3 +1,4 @@
+from operator import truediv
 import re
 from django.db import models
 
@@ -12,6 +13,7 @@ class Course(models.Model):
     description = models.TextField(null=True)
     teaching_language = models.CharField(max_length=255)
     has_prerequisite = models.IntegerField()
+    calender_semester = models.IntegerField(null=True)
 
     def get_prerequisite(self):
         all_objects = CourseHasPrerequisite.objects.filter(course_id=self.id) #lika her

@@ -4,7 +4,15 @@ from django.http import HttpResponse
 
 from courseselect.checks import count_ects, check_prerequisite_by_semester, check_head_requirements, check_course_types, check_correct_semester
 from .models import Course, HeadRequirements, SubRequirements, CourseHasLabel, CourseHasPrerequisite, CourseSemester, Semesters
+from .forms import CourseForm
 
+
+#testa hluti hérna
+def form_test(request):
+    form = CourseForm()
+    context = {'form': form}
+    return render(request, 'form_test.html', context)
+    
 def loginPage(request):
     return render(request, 'loginPage.html')
 
@@ -14,7 +22,7 @@ def homepage(request):
 def course_selection(request):
     course_objects = Course.objects.all()
     context = {'courses': course_objects}
-    return render(request, 'course-selection.html',context)
+    return render(request, 'course-selection.html', context)
 
 def big_check(request):
     other_requirements_result_dict = {}

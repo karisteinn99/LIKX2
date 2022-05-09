@@ -19,6 +19,11 @@
 		<a href="hmm">ABOUT US</a>
 	</div>
 
+	<form action="" method="post">
+		<input type="submit">
+		
+	</form>
+
 	<div class="box" id="leftbox">  
 	<h1>Calendar</h1>
 	<h3>1. year</h3>
@@ -42,9 +47,11 @@
 		<h1>Courses Available</h1>
 		<div class="bigContainer">
 			{% for course in courses %}
-			<div class="course" draggable="true"> <p>{{ course.name }} ({{course.course_code}}) - {{ course.ects }} ECTS </p><button class="infoButton_open" onclick='openInfo("{{course.id}}")'>i</button> 
-				<div class="infoPopup" id="{{course.id}}"><button class="infoButton_close" onclick='closeInfo("{{course.id}}")'>X</button><div class="destringify">{{course.description}}</div></div>
-			</div>
+			{% if course.calender_semester == None %}
+				<div class="course" draggable="true"> <p>{{ course.name }} ({{course.course_code}}) - {{ course.ects }} ECTS </p><button class="infoButton_open" onclick='openInfo("{{course.id}}")'>i</button> 
+					<div class="infoPopup" id="{{course.id}}"><button class="infoButton_close" onclick='closeInfo("{{course.id}}")'>X</button><div class="destringify">{{course.description}}</div></div>
+				</div>
+			{% endif %}
 			{% endfor %}
 		</div>
 	</div>
@@ -56,7 +63,7 @@
 
 		{% for course in courses %}
 			{% if course.teaching_language == 'Enska' %}
-				<div class="destringify">{{course.description}}</div>
+				<div class="destringify">{{course.calender_semester}}</div>
 			{% endif%}
 		{% endfor %}
 		
