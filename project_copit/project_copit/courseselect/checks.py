@@ -69,7 +69,6 @@ def change_dictionary(dict):
                 new_queryset = course_object.union(old_object)
                 old_object = new_queryset
                 #object_list.append(course_object)
-                print(new_queryset)
                 ret_dict[semester] =  new_queryset
     print(ret_dict)
     return ret_dict
@@ -146,10 +145,10 @@ def count_course_types(queryset):
     ret_dict = {}
     for course in queryset:
         if course.semester_type == "3V":
-            print(course.semester_type)
             count_3 += 1
         elif course.semester_type == "12V":
             count_12 = 0
     ret_dict["3V"] = count_3
     ret_dict["12V"] = count_12
+    print(ret_dict)
     return ret_dict
