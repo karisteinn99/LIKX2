@@ -80,7 +80,7 @@
 		<br>{{ sub_requirement.label_id }}: {{ result }}{% endfor %} 
 		{% endfor %}
 		<br>
-		<br>{% for requirement,result in other_requirements %}
+		<br>{% for requirement,result in other_requirements.items %}
 		<br>{{ result }}
 		{% endfor %}
 		</div>
