@@ -64,52 +64,49 @@ def change_dictionary(dict):
             continue
         else:
             old_object = Course.objects.none()
+            counter = 1
             for course_id in courses.split():
                 course_object = Course.objects.filter(id = course_id)
                 new_queryset = course_object.union(old_object)
                 old_object = new_queryset
                 #object_list.append(course_object)
-                ret_dict[semester] =  new_queryset
+                ret_dict[counter] =  new_queryset
+                counter += 1
     print(ret_dict)
     return ret_dict
 
 
 
-def check_prerequisite_by_semester(selected_courses_by_semester): # grf dict = {önn1:queryset, önn2:queryset, önn3:queryset...}
+def check_prerequisite_by_semester(selected_courses_by_semester): 
     '''Fer í hverja önn og athugar hvort undanfaraskilyrðin séu í lagi fyrir annirnar á undan, fyrir hvern áfanga'''
     print(selected_courses_by_semester.keys())
     ret_list = []
     is_okay = True
     for semester in selected_courses_by_semester.keys():
-        #print(semester)
-        #print(selected_courses_by_semester[semester])
         for course in selected_courses_by_semester[semester]:
-            #print(course)
             prereq_list = course.get_prerequisite()
-            #print(prereq_list)
-            if semester == 'Haustönn 1':
-                #print("inní haustönn 1")
+            if semester == '1':
                 if len(prereq_list) == 0:
                     continue
                 else:
                     for prereq in prereq_list:
-                        #print("inní for prereq")
-                        ret_list.append("Course {} has prerequisite {}".format(course, prereq))
-                        #print(ret_list)
+                        ret_list.append("Course on semester 1 {} has prerequisite {}".format(course, prereq))
             else:
                 print("ekki haustönn 1")
+                print(prereq_list)
                 for prereq in prereq_list:
                     print("prereq: {}".format(prereq))
                     #bæta við parallel
-                    for counter in range(len(selected_courses_by_semester.keys()),2):
-                        print("\n")
+                    print("bla")
+                    for counter in range(int(semester),1,-1):
                         print("counter: {}".format(counter))
                         is_okay = True
+                        print(selected_courses_by_semester)
                         if prereq not in selected_courses_by_semester[counter-1]:
                             is_okay = False
                     if is_okay==False:
-                        ret_list.append("Semester {} missing {} because of {} on semester {}\n".format(counter, prereq, course, semester))
-    print(ret_list)
+                        ret_list.append("Semester prior to semester {} missing {} because of {} on {}\n".format(counter, prereq, course, semester))
+            print(ret_list)
     return ret_list
 
 
