@@ -67,8 +67,9 @@ def change_dictionary(dict):
             for course_id in courses.split():
                 course_object = Course.objects.filter(id = course_id)
                 new_queryset = course_object.union(old_object)
-                old_object = course_object
+                old_object = new_queryset
                 #object_list.append(course_object)
+                print(new_queryset)
                 ret_dict[semester] =  new_queryset
     print(ret_dict)
     return ret_dict
@@ -107,39 +108,46 @@ def check_prerequisite_by_semester(selected_courses_by_semester): # grf dict = {
     print(ret_list)
     return ret_list
 
-# def check_correct_semester(selected_courses_by_semester): # grf dict = {Haustönn:queryset, önn2:queryset, önn3:queryset...}
-#     '''Checks for each semester in choice, if that course is taught on that semester'''
-#     ret_list = []
-#     # gæti þurft að laga dict þannig semester verði BARA "Haustönn" og "Vorönn"
-#     for semester in selected_courses_by_semester:
 
-#         for course in selected_courses_by_semester[semester]:
-#             if "Haustönn" in course.semester_name and  "Haustönn" not in semester:
-#                 ret_list.append("{} not taught during {}, is taught during {}".format(course, semester, course.semester_name))
-#             elif "Vorönn" in course.semester_name and "Vorönn" not in semester:
-#                 ret_list.append("{} not taught during {}, is taught during {}".format(course, semester, course.semester_name))
-#     return None #ret_list
 
-# def check_course_types(selected_courses_by_semester): # grf dict = {önn1:queryset, önn2:queryset, önn3:queryset...}
-#     '''Checks how many 3V courses are on each semester and 12V, returns results'''
-#     ret_list = []
-#     for semester in selected_courses_by_semester:
-#         type_dict = count_course_types(selected_courses_by_semester[semester])
-#         if type_dict["3V"] > 1:
-#             ret_list.append("Too many 3V courses on semester {}".format(semester))
-#         if type_dict["12V"] > 5:
-#             ret_list.append("Too many 12V courses on semester {}".format(semester))
-#     return ret_list
+def check_correct_semester(selected_courses_by_semester):
+    '''Checks for each semester in choice, if that course is taught on that semester'''
+    ret_list = []
+    for key in selected_courses_by_semester:
+        print(key[:len(key)-1])
+        for course in selected_courses_by_semester[key]:
+            print(course)
+            if "Haustönn" in course.semester_name[:len(course.semester_name)-4] and "Haustönn" not in key[:len(key)-1]:
+                ret_list.append("{} not taught during {}, it is taught during {}".format(course.name, key[:len(key)-2], course.semester_name[:len(course.semester_name)-5]))
+            elif "Vorönn" in course.semester_name[:len(course.semester_name)-4] and "Vorönn" not in key[:len(key)-1]:
+                ret_list.append("{} not taught during {}, it is taught during {}".format(course.name, key[:len(key)-2], course.semester_name[:len(course.semester_name)-5]))
+    print(ret_list)
+    return ret_list
 
-# def count_course_types(queryset):
-#     count_3 = 0
-#     count_12 = 0
-#     ret_dict = {}
-#     for course in queryset:
-#         if course.semester_type == "3V":
-#             count_3 += 1
-#         elif course.semester_type == "12V":
-#             count_12 = 0
-#     ret_dict["3V"] = count_3
-#     ret_dict["12V"] = count_12
-#     return ret_dict
+
+
+def check_course_types(selected_courses_by_semester): # grf dict = {önn1:queryset, önn2:queryset, önn3:queryset...}
+    '''Checks how many 3V courses are on each semester and 12V, returns results'''
+    ret_list = []
+    for semester in selected_courses_by_semester:
+        type_dict = count_course_types(selected_courses_by_semester[semester])
+        if type_dict["3V"] > 1:
+            ret_list.append("Too many 3V courses on semester {}".format(semester))
+        if type_dict["12V"] > 5:
+            ret_list.append("Too many 12V courses on semester {}".format(semester))
+        print(ret_list)
+    return ret_list
+
+def count_course_types(queryset):
+    count_3 = 0
+    count_12 = 0
+    ret_dict = {}
+    for course in queryset:
+        if course.semester_type == "3V":
+            print(course.semester_type)
+            count_3 += 1
+        elif course.semester_type == "12V":
+            count_12 = 0
+    ret_dict["3V"] = count_3
+    ret_dict["12V"] = count_12
+    return ret_dict
