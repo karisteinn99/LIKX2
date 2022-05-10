@@ -28,18 +28,18 @@
 	<h1>Calendar</h1>
 	<h3>1. year</h3>
 	<div class="year-container">
-		<div class="semester" id="s1"></div>
-		<div class="semester" id="s2"></div>
+		<div class="semester" id="s1">{% for course in courses %}{% for semester, id_list in semesters.items %}{% if course.id in id_list and semester == "1" %}<div class="course {{course.id}}" draggable="true"> <p>{{ course.name }} ({{course.course_code}}) - {{ course.ects }} ECTS - {{ course.semester_type }}</p><button class="infoButton_open" onclick='openInfo("{{course.id}}")'>i</button><div class="infoPopup" id="{{course.id}}"><button class="infoButton_close" onclick='closeInfo("{{course.id}}")'>X</button><div class="destringify">{{course.description}}</div></div></div>{% endif %}{% endfor %}{% endfor %}</div>
+		<div class="semester" id="s2">{% for course in courses %}{% for semester, id_list in semesters.items %}{% if course.id in id_list and semester == "2" %}<div class="course {{course.id}}" draggable="true"> <p>{{ course.name }} ({{course.course_code}}) - {{ course.ects }} ECTS - {{ course.semester_type }}</p><button class="infoButton_open" onclick='openInfo("{{course.id}}")'>i</button><div class="infoPopup" id="{{course.id}}"><button class="infoButton_close" onclick='closeInfo("{{course.id}}")'>X</button><div class="destringify">{{course.description}}</div></div></div>{% endif %}{% endfor %}{% endfor %}</div>
 	</div>
 	<h3>2. year</h3>
 	<div class="year-container">
-		<div class="semester" id="s3"></div>
-		<div class="semester" id="s4"></div>
+		<div class="semester" id="s3">{% for course in courses %}{% for semester, id_list in semesters.items %}{% if course.id in id_list and semester == "3" %}<div class="course {{course.id}}" draggable="true"> <p>{{ course.name }} ({{course.course_code}}) - {{ course.ects }} ECTS - {{ course.semester_type }}</p><button class="infoButton_open" onclick='openInfo("{{course.id}}")'>i</button><div class="infoPopup" id="{{course.id}}"><button class="infoButton_close" onclick='closeInfo("{{course.id}}")'>X</button><div class="destringify">{{course.description}}</div></div></div>{% endif %}{% endfor %}{% endfor %}</div>
+		<div class="semester" id="s4">{% for course in courses %}{% for semester, id_list in semesters.items %}{% if course.id in id_list and semester == "4" %}<div class="course {{course.id}}" draggable="true"> <p>{{ course.name }} ({{course.course_code}}) - {{ course.ects }} ECTS - {{ course.semester_type }}</p><button class="infoButton_open" onclick='openInfo("{{course.id}}")'>i</button><div class="infoPopup" id="{{course.id}}"><button class="infoButton_close" onclick='closeInfo("{{course.id}}")'>X</button><div class="destringify">{{course.description}}</div></div></div>{% endif %}{% endfor %}{% endfor %}</div>
 	</div>
 	<h3>3. year</h3>
 	<div class="year-container">
-		<div class="semester" id="s5"></div>
-		<div class="semester" id="s6"></div>
+		<div class="semester" id="s5">{% for course in courses %}{% for semester, id_list in semesters.items %}{% if course.id in id_list and semester == "5" %}<div class="course {{course.id}}" draggable="true"> <p>{{ course.name }} ({{course.course_code}}) - {{ course.ects }} ECTS - {{ course.semester_type }}</p><button class="infoButton_open" onclick='openInfo("{{course.id}}")'>i</button><div class="infoPopup" id="{{course.id}}"><button class="infoButton_close" onclick='closeInfo("{{course.id}}")'>X</button><div class="destringify">{{course.description}}</div></div></div>{% endif %}{% endfor %}{% endfor %}</div>
+		<div class="semester" id="s6">{% for course in courses %}{% for semester, id_list in semesters.items %}{% if course.id in id_list and semester == "6" %}<div class="course {{course.id}}" draggable="true"> <p>{{ course.name }} ({{course.course_code}}) - {{ course.ects }} ECTS - {{ course.semester_type }}</p><button class="infoButton_open" onclick='openInfo("{{course.id}}")'>i</button><div class="infoPopup" id="{{course.id}}"><button class="infoButton_close" onclick='closeInfo("{{course.id}}")'>X</button><div class="destringify">{{course.description}}</div></div></div>{% endif %}{% endfor %}{% endfor %}</div>
 	</div>
 
 	</div>
@@ -47,26 +47,14 @@
 		<h1>Courses Available</h1>
 		<div class="bigContainer">
 			{% for course in courses %}
+			{% if course.id not in courses_in_calender %}
 				<div class="course {{course.id}}" draggable="true"> <p>{{ course.name }} ({{course.course_code}}) - {{ course.ects }} ECTS - {{ course.semester_type }}</p><button class="infoButton_open" onclick='openInfo("{{course.id}}")'>i</button> 
 					<div class="infoPopup" id="{{course.id}}"><button class="infoButton_close" onclick='closeInfo("{{course.id}}")'>X</button><div class="destringify">{{course.description}}</div></div>
 				</div>
+			{% endif %}
 			{% endfor %}
 		</div>
 	</div>
-
-	<!-- <div class="box" id="rightbox">
-		<h1>Check</h1>
-		<div class="bigContainer">
-			
-		Checking requirements:
-
-		{% for course in courses %}
-			{% if course.teaching_language == 'Enska' %}
-				<div class="destringify">{{course.calender_semester}}</div>
-			{% endif%}
-		{% endfor %}
-		</div>
-	</div> -->
 
 	<div class="box" id="rightbox">
 		<h1>Check</h1>
@@ -74,12 +62,12 @@
 		<form class="form" action="course-selection-with-form" method="post">
 			{% csrf_token %}
 			{{form}}
-			<input class="form-input" id="semester-1" type="text" name="Haustönn 1">
-			<input class="form-input" id="semester-2" type="text" name="Vorönn 1">
-			<input class="form-input" id="semester-3" type="text" name="Haustönn 2">
-			<input class="form-input" id="semester-4" type="text" name="Vorönn 2">
-			<input class="form-input" id="semester-5" type="text" name="Haustönn 3">
-			<input class="form-input" id="semester-6" type="text" name="Vorönn 3">
+			<input class="form-input" id="semester-1" type="text" name="1">
+			<input class="form-input" id="semester-2" type="text" name="2">
+			<input class="form-input" id="semester-3" type="text" name="3">
+			<input class="form-input" id="semester-4" type="text" name="4">
+			<input class="form-input" id="semester-5" type="text" name="5">
+			<input class="form-input" id="semester-6" type="text" name="6">
 			<input class="CHECK" id="check-button" type="submit" value="check">
 		</form>
 		<div class="bigContainer">
@@ -99,9 +87,13 @@
 		{% endfor %}
 		</div>
 	</div>
-
-	
-
+	<div class="test-box">
+	{% for course in courses %}
+	{% for semester, id_list in semesters.items %}
+		{{course}} {{semester}} {{id_list}}
+	{% endfor %}
+	{% endfor %}
+	</div>
 	
 </body>
 </html>

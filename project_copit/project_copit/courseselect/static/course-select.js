@@ -2,6 +2,13 @@ const courses = document.querySelectorAll('.course')
 const semesters = document.querySelectorAll('.semester')
 const courseSelection = document.querySelectorAll('.bigContainer')
 
+
+function on_load() {
+  console.error('halloooooooo')
+}
+
+
+
 // draggable elements and stuff around that
 courses.forEach(course => {
     course.addEventListener('dragstart', () => {
@@ -82,6 +89,7 @@ function form_function() {
   semesters.forEach (semester => {
     s_value = ''
     semester.childNodes.forEach(course => {
+      console.error(course)
       course_id = course.getAttribute('class').split(' ')[1]
       s_value = s_value + course_id + ' ' 
       console.log(s_value)
@@ -92,5 +100,7 @@ function form_function() {
     i = i + 1
   })
 }
+
+
 
 

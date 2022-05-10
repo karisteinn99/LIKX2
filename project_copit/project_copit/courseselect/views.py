@@ -10,20 +10,32 @@ from .models import Course, HeadRequirements, SubRequirements, CourseHasLabel, C
 def course_selection(request):
     data = request.POST.items()
     #print(data)
-    name_dict = {}
+    semester_dict = {}
+    semester_dict_output = {}
+    courses_in_calender = []
     for semester in data:
-        name_dict[semester[0]] = semester[1]
-    print(name_dict)
-    # name_dict.pop('csrfmiddlewaretoken') #virkar ekkiiiii
-    #print(name_dict)
-    name_dict = change_dictionary(name_dict)
-    check_correct_semester(name_dict)
-    check_course_types(name_dict)
+        semester_dict[semester[0]] = semester[1]
+    print(semester_dict)
+    # semester_dict.pop('csrfmiddlewaretoken') #virkar ekkiiiii
+    #print(semester_dict)
+    for semester in semester_dict.keys():
+        courses_str = semester_dict[semester].split(' ')
+        courses_int = []
+        for course in courses_str:
+            if course.isdigit():
+                courses_in_calender.append(int(course))
+                courses_int.append(int(course))
+        semester_dict_output[semester] = courses_int        
+
+    semester_dict = change_dictionary(semester_dict)
+    check_correct_semester(semester_dict)
+    check_course_types(semester_dict)
     
-    head_requirements_result_dict, other_requirements_result_dict = big_check(name_dict)
+    head_requirements_result_dict, other_requirements_result_dict = big_check(semester_dict)
     course_objects = Course.objects.all()
-    context = {'courses': course_objects, 'head_requirements': head_requirements_result_dict, 'other_requirements': other_requirements_result_dict}
+    context = {'courses': course_objects, 'head_requirements': head_requirements_result_dict, 'other_requirements': other_requirements_result_dict, 'semesters': semester_dict_output, 'courses_in_calender': courses_in_calender}
     #print(context)
+
     return render(request, 'course-selection.html', context)
 
 def loginPage(request):
