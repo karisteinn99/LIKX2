@@ -77,22 +77,27 @@ def change_dictionary(dict):
 
 def check_prerequisite_by_semester(selected_courses_by_semester): # grf dict = {önn1:queryset, önn2:queryset, önn3:queryset...}
     '''Fer í hverja önn og athugar hvort undanfaraskilyrðin séu í lagi fyrir annirnar á undan, fyrir hvern áfanga'''
-    print('inní check_prereq_by_semester')
     print(selected_courses_by_semester.keys())
     ret_list = []
+    is_okay = True
     for semester in selected_courses_by_semester.keys():
-        print(semester)
-        is_okay = True
+        #print(semester)
+        #print(selected_courses_by_semester[semester])
         for course in selected_courses_by_semester[semester]:
-            print(course)
+            #print(course)
             prereq_list = course.get_prerequisite()
-            if semester == "Haustönn 1":
+            #print(prereq_list)
+            if semester == 'Haustönn 1':
+                #print("inní haustönn 1")
                 if len(prereq_list) == 0:
                     continue
                 else:
                     for prereq in prereq_list:
+                        #print("inní for prereq")
                         ret_list.append("Course {} has prerequisite {}".format(course, prereq))
+                        #print(ret_list)
             else:
+                print("ekki haustönn 1")
                 for prereq in prereq_list:
                     print("prereq: {}".format(prereq))
                     #bæta við parallel
