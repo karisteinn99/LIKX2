@@ -41,22 +41,22 @@ def count_ects(objects):
 
 
 def change_dictionary(dict):
+    old_object = Course.objects.none()
     ret_dict = {}
     #dict.pop('csrfmiddlewaretoken')
-    old_object = Course.objects.none()
+    counter = 1
     for semester,courses in dict.items():
         if semester == 'csrfmiddlewaretoken':
             continue
         else:
-            counter = 1
             for course_id in courses.split():
-                print(courses.split())
                 course_object = Course.objects.filter(id = course_id)
                 new_queryset = course_object.union(old_object)
                 old_object = new_queryset
                 #object_list.append(course_object)
             ret_dict[counter] =  new_queryset
             counter += 1
+            old_object = Course.objects.none()
     print(ret_dict)
     return ret_dict
 
