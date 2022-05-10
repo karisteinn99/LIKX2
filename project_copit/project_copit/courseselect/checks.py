@@ -59,13 +59,16 @@ def change_dictionary(dict):
     ret_dict = {}
     #dict.pop('csrfmiddlewaretoken')
     for semester,courses in dict.items():
-        old_object = Course.objects.none()
-        for course_id in courses.split():
-            course_object = Course.objects.filter(id = course_id)
-            new_queryset = course_object.union(old_object)
-            old_object = course_object
-            #object_list.append(course_object)
-            ret_dict[semester] =  new_queryset
+        if semester == 'csrfmiddlewaretoken':
+            continue
+        else:
+            old_object = Course.objects.none()
+            for course_id in courses.split():
+                course_object = Course.objects.filter(id = course_id)
+                new_queryset = course_object.union(old_object)
+                old_object = course_object
+                #object_list.append(course_object)
+                ret_dict[semester] =  new_queryset
     print(ret_dict)
     return ret_dict
 
