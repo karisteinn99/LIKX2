@@ -15,7 +15,6 @@ def course_selection(request):
     courses_in_calender = []
     for semester in data:
         semester_dict[semester[0]] = semester[1]
-    print(semester_dict)
     # semester_dict.pop('csrfmiddlewaretoken') #virkar ekkiiiii
     #print(semester_dict)
     for semester in semester_dict.keys():

@@ -1,9 +1,4 @@
-.test-box {
-    width: 500px;
-    height: 500px;
-    background-color: cyan;
-    z-index: 1;
-}
+
 
 .form-input {
     display: none;
@@ -180,6 +175,16 @@ h3 {
     text-align: left;
     margin: 0;
     margin-left: 10px;
+    width: 90%;
+    padding-bottom: 1px;
+    border-bottom: 1px solid black;
+}
+
+h5  {
+    justify-content: center;
+    width: 85%;
+    margin: 0 17% 0 18%;
+    display: inline;
 }
 .box {
     position: relative;
@@ -217,6 +222,8 @@ h3 {
 .semester {
     display: absolute;
     display: inline;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     margin: 0.5px;
     border-radius: 2px;

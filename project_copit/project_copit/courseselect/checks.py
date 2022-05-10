@@ -19,14 +19,11 @@ def check_head_requirements(selection_objects):
                     labeled_id_list = labeled_queryset.values_list('id') #listi af idum i labeled queryset
                     labeled_selection = courses.filter(pk__in = labeled_id_list) #filtera selectionið með labelinu skila Course objects
                     if sub_requirement.quantity == -1: #selectionið þarf að innihalda öll objects sem finnast með þessu labeli
-                        print(labeled_selection.union(labeled_queryset))
                         if labeled_selection.union(labeled_queryset) == labeled_selection:
                             result_dict[head_requirement][sub_requirement]="Fulfilled" 
                         else:
                             result_dict[head_requirement][sub_requirement]="Not fulfilled"
                     else: #bera saman selection og labeled queryset einingarnar mv quantity
-                        print("count_ects")
-                        print(count_ects(labeled_selection))
                         if count_ects(labeled_selection) >= sub_requirement.quantity: #fulfils this sub requirement
                             result_dict[head_requirement][sub_requirement]="Fulfilled"
                         else:
@@ -60,7 +57,6 @@ def change_dictionary(dict):
                 ret_dict[counter] =  new_queryset
                 counter += 1
                 old_object = Course.objects.none()
-    print(ret_dict)
     return ret_dict
 
 

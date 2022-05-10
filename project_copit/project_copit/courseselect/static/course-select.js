@@ -89,14 +89,11 @@ function form_function() {
   semesters.forEach (semester => {
     s_value = ''
     semester.childNodes.forEach(course => {
-      console.error(course)
       course_id = course.getAttribute('class').split(' ')[1]
       s_value = s_value + course_id + ' ' 
-      console.log(s_value)
       form_input = document.getElementById('semester-'+ i)
       form_input.setAttribute('value', s_value)
     })
-    console.log(s_value)
     i = i + 1
   })
 }
