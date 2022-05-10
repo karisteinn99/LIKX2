@@ -94,9 +94,11 @@ def check_prerequisite_by_semester(selected_courses_by_semester): # grf dict = {
                     for prereq in prereq_list:
                         ret_list.append("Course {} has prerequisite {}".format(course, prereq))
             else:
+                print("elsið")
                 for prereq in prereq_list:
                     print("prereq: {}".format(prereq))
                     #bæta við parallel
+                    print(len(selected_courses_by_semester))
                     for counter in range(len(selected_courses_by_semester.keys()),2):
                         print("counter: {}".format(counter))
                         is_okay = True
