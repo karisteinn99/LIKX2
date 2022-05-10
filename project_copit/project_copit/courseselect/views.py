@@ -14,7 +14,7 @@ def course_selection(request):
     for semester in data:
         name_dict[semester[0]] = semester[1]
     print(name_dict)
-    # name_dict.pop('csrfmiddlewaretoken') #virkar ekkiiiii
+    # name_dict.pop('csrfmiddlewaretoken')
     name_dict = change_dictionary(name_dict)
     
     head_requirements_result_dict, other_requirements_result_dict = big_check(name_dict)
@@ -33,7 +33,7 @@ def homepage(request):
 def big_check(selected_objects_by_semester):
     other_requirements_result_dict = {}
     total_selected_objects = Course.objects.none()
-    for semester, queryset in selected_objects_by_semester.items():
+    for semester, queryset in sorted(selected_objects_by_semester.items(), reverse=True):
         total_selected_objects.union(queryset) #mögulega ekki hægt að filtera union
     #selection_objects = Course.objects.all() #BREYTA SVO Í ACTUAL USER INPUTTIÐ
     head_requirements_result_dict = check_head_requirements(total_selected_objects)

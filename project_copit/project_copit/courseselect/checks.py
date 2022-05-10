@@ -78,27 +78,32 @@ def change_dictionary(dict):
 def check_prerequisite_by_semester(selected_courses_by_semester): # grf dict = {önn1:queryset, önn2:queryset, önn3:queryset...}
     '''Fer í hverja önn og athugar hvort undanfaraskilyrðin séu í lagi fyrir annirnar á undan, fyrir hvern áfanga'''
     print('inní check_prereq_by_semester')
+    print(selected_courses_by_semester.keys())
     ret_list = []
     for semester in selected_courses_by_semester.keys():
         print(semester)
-        if semester == 1:
-            pass
-        else:
-            for course in selected_courses_by_semester[semester]:
-                print(course)
-                prereq_queryset = course.get_prerequisite()
-                for prereq in prereq_queryset:
-                    print(prereq)
+        is_okay = True
+        for course in selected_courses_by_semester[semester]:
+            print(course)
+            prereq_list = course.get_prerequisite()
+            if semester == "Haustönn 1":
+                if len(prereq_list) == 0:
+                    continue
+                else:
+                    for prereq in prereq_list:
+                        ret_list.append("Course {} has prerequisite {}".format(course, prereq))
+            else:
+                for prereq in prereq_list:
+                    print("prereq: {}".format(prereq))
                     #bæta við parallel
-                    for counter in range(semester,2):
-                        print(counter)
-                        is_okay=True
+                    for counter in range(len(selected_courses_by_semester.keys()),2):
+                        print("counter: {}".format(counter))
+                        is_okay = True
                         if prereq not in selected_courses_by_semester[counter-1]:
                             is_okay = False
                             #missing_list.append(prereq.course_code)
                     if is_okay==False:
                         ret_list.append("Semester {} missing {} because of {} on semester {}\n".format(counter, prereq, course, semester))
-                
     print(ret_list)
     return ret_list
 
