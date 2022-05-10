@@ -70,6 +70,18 @@
 
 	<div class="box" id="rightbox">
 		<h1>Check</h1>
+		<button class="CHECK" id="save-button" onclick="form_function()"><img id="save-image" src="{% static 'save_icon.png' %}" alt="save button logo"></button>
+		<form class="form" action="course-selection-with-form" method="post">
+			{% csrf_token %}
+			{{form}}
+			<input class="form-input" id="semester-1" type="text" name="Haustönn 1">
+			<input class="form-input" id="semester-2" type="text" name="Vorönn 1">
+			<input class="form-input" id="semester-3" type="text" name="Haustönn 2">
+			<input class="form-input" id="semester-4" type="text" name="Vorönn 2">
+			<input class="form-input" id="semester-5" type="text" name="Haustönn 3">
+			<input class="form-input" id="semester-6" type="text" name="Vorönn 3">
+			<input class="CHECK" id="check-button" type="submit" value="check">
+		</form>
 		<div class="bigContainer">
 			
 		Checking requirements
@@ -88,18 +100,8 @@
 		</div>
 	</div>
 
-	<button class="CHECK" id="form-function" onclick="form_function()">update</button>
+	
 
-	<form class="form" action="course-selection-with-form" method="post">
-        {% csrf_token %}
-        {{form}}
-        semester-1 <input id="semester-1" type="text" name="Haustönn 1">
-		semester-2 <input id="semester-2" type="text" name="Vorönn 1">
-		semester-3 <input id="semester-3" type="text" name="Haustönn 2">
-		semester-4 <input id="semester-4" type="text" name="Vorönn 2">
-		semester-5 <input id="semester-5" type="text" name="Haustönn 3">
-		semester-6 <input id="semester-6" type="text" name="Vorönn 3">
-        <input class="CHECK" type="submit"  value="check">
-	</form>
+	
 </body>
 </html>
