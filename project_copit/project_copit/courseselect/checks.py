@@ -97,11 +97,11 @@ def check_prerequisite_by_semester(selected_courses_by_semester): # grf dict = {
                     print("prereq: {}".format(prereq))
                     #bæta við parallel
                     for counter in range(len(selected_courses_by_semester.keys()),2):
+                        print("\n")
                         print("counter: {}".format(counter))
                         is_okay = True
                         if prereq not in selected_courses_by_semester[counter-1]:
                             is_okay = False
-                            #missing_list.append(prereq.course_code)
                     if is_okay==False:
                         ret_list.append("Semester {} missing {} because of {} on semester {}\n".format(counter, prereq, course, semester))
     print(ret_list)
