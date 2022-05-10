@@ -143,10 +143,10 @@ def count_course_types(queryset):
     ret_dict = {}
     for course in queryset:
         if course.semester_type == "3V":
-            print(course.semester_type)
             count_3 += 1
         elif course.semester_type == "12V":
             count_12 = 0
     ret_dict["3V"] = count_3
     ret_dict["12V"] = count_12
+    print(ret_dict)
     return ret_dict

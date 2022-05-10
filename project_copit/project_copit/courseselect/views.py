@@ -41,7 +41,7 @@ def big_check(selected_objects_by_semester):
     #selection_objects = Course.objects.all() #BREYTA SVO Í ACTUAL USER INPUTTIÐ
     head_requirements_result_dict = check_head_requirements(total_selected_objects)
     other_requirements_result_dict["prerequisite check"] = check_prerequisite_by_semester(selected_objects_by_semester) #ÞEGAR GET FENGIÐ SKIPT EFTIR ÖNNUM
-    #other_requirements_result_dict["type check"] = check_course_types(selection_objects) #hvort það sé rétt magn af 12V og 3V
+    other_requirements_result_dict["type check"] = check_course_types(selected_objects_by_semester) #hvort það sé rétt magn af 12V og 3V
     other_requirements_result_dict["semester check"] = check_correct_semester(selected_objects_by_semester) #hvort áfangar séu kenndir á völdu önnunum
     #context = {'head_requirements': head_requirements_result_dict, 'other_requirements': other_requirements_result_dict}
     # context = {'head_requirements': head_requirements_result_dict}
