@@ -49,14 +49,15 @@ def change_dictionary(dict):
         if semester == 'csrfmiddlewaretoken':
             continue
         else:
-            for course_id in courses.split():
-                course_object = Course.objects.filter(id = course_id)
-                new_queryset = course_object.union(old_object)
-                old_object = new_queryset
-                #object_list.append(course_object)
-            ret_dict[counter] =  new_queryset
-            counter += 1
-            old_object = Course.objects.none()
+            if len(courses.split()) > 0:
+                for course_id in courses.split():
+                    course_object = Course.objects.filter(id = course_id)
+                    new_queryset = course_object.union(old_object)
+                    old_object = new_queryset
+                    #object_list.append(course_object)
+                ret_dict[counter] =  new_queryset
+                counter += 1
+                old_object = Course.objects.none()
     print(ret_dict)
     return ret_dict
 
