@@ -98,8 +98,9 @@ def check_prerequisite_by_semester(selected_courses_by_semester): # grf dict = {
                             #missing_list.append(prereq.course_code)
                     if is_okay==False:
                         ret_list.append("Semester {} missing {} because of {} on semester {}\n".format(counter, prereq, course, semester))
+                
     print(ret_list)
-    return None #ret_str
+    return ret_list
 
 # def check_correct_semester(selected_courses_by_semester): # grf dict = {Haustönn:queryset, önn2:queryset, önn3:queryset...}
 #     '''Checks for each semester in choice, if that course is taught on that semester'''
