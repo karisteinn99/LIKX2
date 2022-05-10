@@ -69,7 +69,6 @@ def change_dictionary(dict):
                 new_queryset = course_object.union(old_object)
                 old_object = new_queryset
                 #object_list.append(course_object)
-                print(new_queryset)
                 ret_dict[semester] =  new_queryset
     print(ret_dict)
     return ret_dict
