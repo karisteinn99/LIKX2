@@ -9,13 +9,13 @@ from .models import Course, HeadRequirements, SubRequirements, CourseHasLabel, C
 # form test og course selection smiðað saman
 def course_selection(request):
     data = request.POST.items()
-    print(data)
+    #print(data)
     name_dict = {}
     for semester in data:
         name_dict[semester[0]] = semester[1]
     print(name_dict)
     # name_dict.pop('csrfmiddlewaretoken') #virkar ekkiiiii
-    print(name_dict)
+    #print(name_dict)
     name_dict = change_dictionary(name_dict)
     check_correct_semester(name_dict)
     check_course_types(name_dict)
@@ -23,7 +23,7 @@ def course_selection(request):
     head_requirements_result_dict, other_requirements_result_dict = big_check(name_dict)
     course_objects = Course.objects.all()
     context = {'courses': course_objects, 'head_requirements': head_requirements_result_dict, 'other_requirements': other_requirements_result_dict}
-    print(context)
+    #print(context)
     return render(request, 'course-selection.html', context)
 
 def loginPage(request):
