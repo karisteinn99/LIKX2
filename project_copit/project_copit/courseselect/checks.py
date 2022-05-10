@@ -96,17 +96,17 @@ def check_prerequisite_by_semester(selected_courses_by_semester):
 
 
 
-# def check_correct_semester(selected_courses_by_semester):
-#     '''Checks for each semester in choice, if that course is taught on that semester'''
-#     ret_list = []
-#     for key in selected_courses_by_semester:
-#         for course in selected_courses_by_semester[key]:
-#             if "Haustönn" in course.semester_name[:len(course.semester_name)-4] and "Haustönn" not in key[:len(key)-1]:
-#                 ret_list.append("{} is not taught during {}, it is taught during {}".format(course.name, key[:len(key)-2], course.semester_name[:len(course.semester_name)-5]))
-#             elif "Vorönn" in course.semester_name[:len(course.semester_name)-4] and "Vorönn" not in key[:len(key)-1]:
-#                 ret_list.append("{} is not taught during {}, it is taught during {}".format(course.name, key[:len(key)-2], course.semester_name[:len(course.semester_name)-5]))
-#     #print(ret_list)
-#     return ret_list
+def check_correct_semester(selected_courses_by_semester):
+    '''Checks for each semester in choice, if that course is taught on that semester'''
+    ret_list = []
+    for key in selected_courses_by_semester:
+        for course in selected_courses_by_semester[key]:
+            if "Haustönn" in course.semester_name[:len(course.semester_name)-4] and key%2 == 0:
+                ret_list.append("{} is not taught during vorönn, it is taught during {}".format(course.name, course.semester_name[:len(course.semester_name)-5]))
+            elif "Vorönn" in course.semester_name[:len(course.semester_name)-4] and key%2 != 0:
+                ret_list.append("{} is not taught during haustönn, it is taught during {}".format(course.name, course.semester_name[:len(course.semester_name)-5]))
+    #print(ret_list)
+    return ret_list
 
 
 
