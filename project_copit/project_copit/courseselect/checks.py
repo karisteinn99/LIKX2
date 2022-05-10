@@ -75,25 +75,31 @@ def change_dictionary(dict):
 
 
 
-# def check_prerequisite_by_semester(selected_courses_by_semester): # grf dict = {önn1:queryset, önn2:queryset, önn3:queryset...}
-#     '''Fer í hverja önn og athugar hvort undanfaraskilyrðin séu í lagi fyrir annirnar á undan, fyrir hvern áfanga'''
-#     # print('inní check_prereq_by_semester')
-#     # for semester in selected_courses_by_semester.keys():
-#     #     if semester == 1:
-#     #         pass
-#     #     else:
-#     #         for course in selected_courses_by_semester[semester]:
-#     #             prereq_queryset = course.get_prerequisite()
-#     #             for prereq in prereq_queryset:
-#     #                 #bæta við parallel
-#     #                 for counter in range(semester,2):
-#     #                     is_okay=True
-#     #                     if prereq not in selected_courses_by_semester[counter-1]:
-#     #                         is_okay = False
-#     #                         #missing_list.append(prereq.course_code)
-#     #                 if is_okay==False:
-#     #                     ret_str += "Semester {} missing {} because of {} on semester {}\n".format(counter, prereq, course, semester)
-#     return None #ret_str
+def check_prerequisite_by_semester(selected_courses_by_semester): # grf dict = {önn1:queryset, önn2:queryset, önn3:queryset...}
+    '''Fer í hverja önn og athugar hvort undanfaraskilyrðin séu í lagi fyrir annirnar á undan, fyrir hvern áfanga'''
+    print('inní check_prereq_by_semester')
+    ret_list = []
+    for semester in selected_courses_by_semester.keys():
+        print(semester)
+        if semester == 1:
+            pass
+        else:
+            for course in selected_courses_by_semester[semester]:
+                print(course)
+                prereq_queryset = course.get_prerequisite()
+                for prereq in prereq_queryset:
+                    print(prereq)
+                    #bæta við parallel
+                    for counter in range(semester,2):
+                        print(counter)
+                        is_okay=True
+                        if prereq not in selected_courses_by_semester[counter-1]:
+                            is_okay = False
+                            #missing_list.append(prereq.course_code)
+                    if is_okay==False:
+                        ret_list.append("Semester {} missing {} because of {} on semester {}\n".format(counter, prereq, course, semester))
+    print(ret_list)
+    return None #ret_str
 
 # def check_correct_semester(selected_courses_by_semester): # grf dict = {Haustönn:queryset, önn2:queryset, önn3:queryset...}
 #     '''Checks for each semester in choice, if that course is taught on that semester'''
