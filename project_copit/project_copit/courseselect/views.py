@@ -20,7 +20,7 @@ def course_selection(request):
     head_requirements_result_dict = big_check(name_dict)
 
     course_objects = Course.objects.all()
-    context = {'courses': course_objects, 'head_requirements':head_requirements_result_dict}
+    context = {'courses': course_objects, 'head_requirements': head_requirements_result_dict}
     return render(request, 'course-selection.html', context)
 
 def loginPage(request):
