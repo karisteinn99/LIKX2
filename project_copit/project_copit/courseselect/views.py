@@ -3,7 +3,7 @@ from multiprocessing import context
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from courseselect.checks import check_head_requirements, change_dictionary
+from courseselect.checks import check_head_requirements, change_dictionary, check_correct_semester, check_course_types
 from .models import Course, HeadRequirements, SubRequirements, CourseHasLabel, CourseHasPrerequisite, CourseSemester, Semesters
 
 # form test og course selection smiðað saman
@@ -15,12 +15,15 @@ def course_selection(request):
         name_dict[semester[0]] = semester[1]
     print(name_dict)
     # name_dict.pop('csrfmiddlewaretoken') #virkar ekkiiiii
+    print(name_dict)
     name_dict = change_dictionary(name_dict)
+    check_correct_semester(name_dict)
+    check_course_types(name_dict)
     
-    head_requirements_result_dict = big_check(name_dict)
+    #head_requirements_result_dict = big_check(name_dict)
 
     course_objects = Course.objects.all()
-    context = {'courses': course_objects, 'head_requirements': head_requirements_result_dict}
+    context = {'courses': course_objects}#, 'head_requirements': head_requirements_result_dict}
     return render(request, 'course-selection.html', context)
 
 def loginPage(request):
@@ -39,7 +42,7 @@ def big_check(selected_objects_by_semester):
     head_requirements_result_dict = check_head_requirements(total_selected_objects)
     #other_requirements_result_dict["prerequisite check"] = check_prerequisite_by_semester(selection_objects) #ÞEGAR GET FENGIÐ SKIPT EFTIR ÖNNUM
     #other_requirements_result_dict["type check"] = check_course_types(selection_objects) #hvort það sé rétt magn af 12V og 3V
-    #other_requirements_result_dict["semester check"] = check_correct_semester(selection_objects) #hvort áfangar séu kenndir á völdu önnunum
+    other_requirements_result_dict["semester check"] = check_correct_semester(selected_objects_by_semester) #hvort áfangar séu kenndir á völdu önnunum
     #context = {'head_requirements': head_requirements_result_dict, 'other_requirements': other_requirements_result_dict}
     # context = {'head_requirements': head_requirements_result_dict}
     # return render(request,'check-test.html',context)
