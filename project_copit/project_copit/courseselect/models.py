@@ -16,10 +16,13 @@ class Course(models.Model):
     calender_semester = models.IntegerField(null=True)
 
     def get_prerequisite(self):
-        all_objects = CourseHasPrerequisite.objects.filter(course_id=self.id) #lika her
+        print(self.name)
+        all_objects = CourseHasPrerequisite.objects.filter(course_id=self.id).distinct()
+        print("inní get_prerequisite")
+        print(all_objects)
         prereq_list = []
         for obj in all_objects.values():
-            prereq_list.append(Course.objects.get(pk=obj['prereq_id_id'])) #gæti verið að vanti _id
+            prereq_list.append(Course.objects.get(id=obj['prereq_id_id']))
         return prereq_list
     
     def get_semester(self):
