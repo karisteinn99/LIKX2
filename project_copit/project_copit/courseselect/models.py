@@ -16,10 +16,7 @@ class Course(models.Model):
     calender_semester = models.IntegerField(null=True)
 
     def get_prerequisite(self):
-        print(self.name)
-        all_objects = CourseHasPrerequisite.objects.filter(course_id=self.id).distinct()
-        print("inní get_prerequisite")
-        print(all_objects)
+        all_objects = CourseHasPrerequisite.objects.filter(course_id=self.id)
         prereq_list = []
         for obj in all_objects.values():
             prereq_list.append(Course.objects.get(id=obj['prereq_id_id']))

@@ -35,11 +35,7 @@ def homepage(request):
 
 def big_check(selected_objects_by_semester):
     other_requirements_result_dict = {}
-    total_selected_objects = Course.objects.none()
-    for semester, queryset in sorted(selected_objects_by_semester.items(), reverse=True):
-        total_selected_objects.union(queryset) #mögulega ekki hægt að filtera union
-    #selection_objects = Course.objects.all() #BREYTA SVO Í ACTUAL USER INPUTTIÐ
-    head_requirements_result_dict = check_head_requirements(total_selected_objects)
+    head_requirements_result_dict = check_head_requirements(selected_objects_by_semester)
     other_requirements_result_dict["prerequisite check"] = check_prerequisite_by_semester(selected_objects_by_semester) #ÞEGAR GET FENGIÐ SKIPT EFTIR ÖNNUM
     other_requirements_result_dict["type check"] = check_course_types(selected_objects_by_semester) #hvort það sé rétt magn af 12V og 3V
     other_requirements_result_dict["semester check"] = check_correct_semester(selected_objects_by_semester) #hvort áfangar séu kenndir á völdu önnunum
