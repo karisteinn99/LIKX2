@@ -81,7 +81,9 @@
 		{% endfor %}
 		<br>
 		<br>{% for requirement,result in other_requirements.items %}
-		<br>{{ result }}
+		<br>{% for res in result %}
+		<br>{{ res }}
+		{% endfor %}
 		{% endfor %}
 		</div>
 	</div>
