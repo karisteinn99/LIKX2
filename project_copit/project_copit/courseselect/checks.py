@@ -28,6 +28,7 @@ def check_head_requirements(selection_objects):
                         result_dict[head_requirement][sub_requirement]="Fulfilled"
                     else:
                         result_dict[head_requirement][sub_requirement]="Not fulfilled"
+    print(result_dict)
     return result_dict
 
 
