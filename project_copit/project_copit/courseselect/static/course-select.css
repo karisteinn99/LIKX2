@@ -314,7 +314,7 @@ h5  {
       border-bottom: 0.2px solid black;
       border-bottom-style: dotted;
       width: 80%;
-      margin: 0 10% 0 10%;
+      margin: 0 10% 1% 10%;
       padding-bottom: 1%;
       font-size: larger;
   }
@@ -338,3 +338,13 @@ h5  {
       border-color: yellow;
   }
 
+  .green {
+      border-color: rgb(0, 194, 0);
+      justify-content: center;
+      text-align: center;
+      color: green;
+      font-weight: bolder;
+      font-size: larger;
+      font-family: cursive;
+      margin: 2%;
+  }
