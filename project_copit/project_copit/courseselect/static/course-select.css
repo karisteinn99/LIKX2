@@ -109,7 +109,7 @@ body {
     z-index: 1; 
     width: 400px;
     height: 300px;
-    overflow-y: scroll;
+    overflow-y: auto;
     background-color: rgb(255, 251, 175);
     top: 30%;
 }
@@ -272,7 +272,7 @@ h5  {
     margin: 0.5px;
     border-radius: 2px;
     border: 1px solid rgb(168, 0, 0);
-    overflow-y: scroll;
+    overflow-y: auto;
     background-color: rgb(255, 254, 235);
 }
 
@@ -285,7 +285,7 @@ h5  {
     border: 3px solid black;
     border-radius: 2px;
     display: block;
-    overflow-y: scroll;
+    overflow-y: auto;
     background-color: rgb(255, 254, 235);
 }
 
