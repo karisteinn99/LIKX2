@@ -38,9 +38,8 @@ def count_ects(objects):
     return count
 
 def check_ects_per_semester(selected_courses_by_semester):
-    print("inní check_ects_per_semester")
     ret_list =[]
-    for semester in selected_courses_by_semester.items():
+    for semester,values in selected_courses_by_semester.items():
         semester_count = count_ects(selected_courses_by_semester[semester])
         if semester_count > 36:
             ret_list.append("Too many ECTS on semester {}".format(semester))
