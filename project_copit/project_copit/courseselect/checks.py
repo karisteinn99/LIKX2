@@ -94,29 +94,21 @@ def check_prerequisite_by_semester(selected_courses_by_semester):
                     course_object = CourseHasPrerequisite.objects.get(course_id_id = course.id, prereq_id_id = prereq.id)
                     if course_object.parallel_enrollment == 0:
                         for counter in range(semester-1,0,-1):
-                            print("ekki parallel - counter: {}, semester: {}, course: {}, prereq: {}".format(counter, semester, course, prereq))
-                            if prereq not in selected_courses_by_semester[counter]:
-                                print("{} finnst ekki á önn {}".format(prereq, counter))
-                            else:
+                            if prereq in selected_courses_by_semester[counter]:
                                 found_counter += 1
-                                print("{} fannst á önn {}".format(prereq, counter))
                         if found_counter == 0:
                             false_list.append(prereq)
                     else:
                         for counter in range(semester,0,-1):
-                            print("parallel - counter: {}, semester: {}, course: {}, prereq: {}".format(counter, semester, course, prereq))
-                            if prereq not in selected_courses_by_semester[counter]:
-                                print("{} finnst ekki á önn {}".format(prereq, counter))
-                            else:
+                            if prereq in selected_courses_by_semester[counter]:
                                 found_counter += 1
-                                print("{} fannst á önn {}".format(prereq, counter))
                         if found_counter == 0:   
                             false_list.append(prereq)
                     
                 if len(false_list) != 0:
                     ret_str += ("Course {} needs prerequisite/s:".format(course))
                     for prerequisite in false_list:
-                        ret_str += "{}".format(prerequisite)
+                        ret_str += "{} ".format(prerequisite)
                     ret_list.append(ret_str)
     return ret_list
 
