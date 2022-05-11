@@ -1,3 +1,7 @@
+body {
+    background-color: rgb(79, 79, 93);
+}
+
 .form-input {
     display: none;
 }
@@ -141,7 +145,7 @@
 .navbar {
     position: relative;
     width: auto;
-    height: 60px;
+    height: 50px;
     background-image: url('red_image.jpg');
     border: 1px rgb(255, 13, 0);
     border-style: ridge;
@@ -149,21 +153,27 @@
 
 .navbar a {
     display: inline-block;
-    height: 60px;
+    float: left;
+    height: 50px;
     font-size: larger;
     font-weight: bold;
     border-right: 1px solid black;
-    border-left: 1px solid black;
     padding: 0 15px;
-    right: 0;
-    line-height: 55px;
+    margin: 0;
+    line-height: 50px;
     color: black;
     text-decoration: wavy;
+    border-radius: 8px;
 }
 
 .navbar a:hover {
-    background-color: grey;
+    background-color: rgb(171, 3, 3);
     border-radius: 8px;
+}
+
+#logout {
+    float: right;
+    border-left: 1px solid black;
 }
 
 body,html {
@@ -198,7 +208,7 @@ h3 {
     text-align: left;
     margin: 0;
     margin-left: 10px;
-    width: 90%;
+    width: 93%;
     padding-bottom: 1px;
     border-bottom: 1px solid black;
 }
