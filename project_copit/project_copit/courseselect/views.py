@@ -47,9 +47,9 @@ def homepage(request):
 def big_check(selected_objects_by_semester):
     other_requirements_result_dict = {}
     head_requirements_result_dict = check_head_requirements(selected_objects_by_semester)
-    other_requirements_result_dict["prerequisite check"] = check_prerequisite_by_semester(selected_objects_by_semester) #ÞEGAR GET FENGIÐ SKIPT EFTIR ÖNNUM
-    other_requirements_result_dict["type check"] = check_course_types(selected_objects_by_semester) #hvort það sé rétt magn af 12V og 3V
-    other_requirements_result_dict["semester check"] = check_correct_semester(selected_objects_by_semester) #hvort áfangar séu kenndir á völdu önnunum
+    other_requirements_result_dict["prerequisite errors"] = check_prerequisite_by_semester(selected_objects_by_semester) #ÞEGAR GET FENGIÐ SKIPT EFTIR ÖNNUM
+    other_requirements_result_dict["semester errors"] = check_correct_semester(selected_objects_by_semester) #hvort áfangar séu kenndir á völdu önnunum
+    other_requirements_result_dict[" "] = check_course_types(selected_objects_by_semester) #hvort það sé rétt magn af 12V og 3V
     #context = {'head_requirements': head_requirements_result_dict, 'other_requirements': other_requirements_result_dict}
     # context = {'head_requirements': head_requirements_result_dict}
     # return render(request,'check-test.html',context)

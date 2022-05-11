@@ -77,9 +77,8 @@
 		<div class="bigContainer">
 		
 		<div class="check-box">
-		{% for requirement,result in other_requirements.items %}
+		{% for requirement, result in other_requirements.items %}
 			<div class="head-title"> {{ requirement }} </div> 
-			<br>
 			{% for res in result %}
 				<div class="result">{{ res }}</div>
 			{% endfor %}
@@ -87,10 +86,10 @@
 		</div>
 
 		<div class="check-box" id="yellow">
-			{% for head_requirement,sub_requirements in head_requirements.items %} 
+			{% for head_requirement, sub_requirements in head_requirements.items %} 
 				<div class="head-title"> {{ head_requirement.title }} </div> 
 				<br>
-				{% for sub_requirement,result in sub_requirements.items %}
+				{% for sub_requirement, result in sub_requirements.items %}
 					<div class="result">{{ sub_requirement.label_id }}: <div class="float-right">{{ result }}</div></div>
 				{% endfor %} 
 			{% endfor %}

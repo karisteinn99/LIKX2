@@ -109,7 +109,7 @@ body {
     z-index: 1; 
     width: 400px;
     height: 300px;
-    overflow-y: scroll;
+    overflow-y: auto;
     background-color: rgb(255, 251, 175);
     top: 30%;
 }
@@ -173,7 +173,7 @@ body {
     line-height: 50px;
     color: black;
     text-decoration: wavy;
-    border-radius: 8px;
+    border-radius: 10px;
 }
 
 .navbar a:hover {
@@ -272,7 +272,7 @@ h5  {
     margin: 0.5px;
     border-radius: 2px;
     border: 1px solid rgb(168, 0, 0);
-    overflow-y: scroll;
+    overflow-y: auto;
     background-color: rgb(255, 254, 235);
 }
 
@@ -280,12 +280,12 @@ h5  {
     position: relative;
     display: flex;
     width: auto;
-    height: 80%;
+    height: 77%;
     margin: 67.8px 1%;
     border: 3px solid black;
     border-radius: 2px;
     display: block;
-    overflow-y: scroll;
+    overflow-y: auto;
     background-color: rgb(255, 254, 235);
 }
 
@@ -311,9 +311,12 @@ h5  {
       text-align: center;
       justify-content: center;
       font-weight: bold;
-      border-bottom: 1px solid black;
+      border-bottom: 0.2px solid black;
+      border-bottom-style: dotted;
       width: 80%;
-      margin: 3% 10% 0 10%;
+      margin: 0 10% 0 10%;
+      padding-bottom: 1%;
+      font-size: larger;
   }
 
   .result {
