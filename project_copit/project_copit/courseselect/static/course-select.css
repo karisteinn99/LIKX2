@@ -319,3 +319,15 @@ h5  {
   .float-right {
       float: right;
   }
+
+  .check-box {
+      margin: 1%;
+      border: 1px solid red;
+      border-radius: 2px;
+      border-style: groove;
+  }
+
+  .check-box#yellow {
+      border-color: yellow;
+  }
+
