@@ -16,18 +16,18 @@
 
 	<div class="navbar"> 
 		<a href=".." id="logout">LOG OUT</a>
-		<a href="hmm">ABOUT US</a>
+		<a href="https://www.youtube.com/watch?v=Du4jTG7-93k&ab_channel=PeacockKids">HOME</a>
+		<a href="https://www.google.com/search?q=account&oq=account&aqs=chrome..69i57j0i271l2j69i60l3j5j69i60.1132j0j9&sourceid=chrome&ie=UTF-8">ACCOUNT</a>
+		<a href="https://www.imdb.com/title/tt7905168/">ABOUT US</a>
+		
+		
 	</div>
-
-	<form action="" method="post">
-		<input type="submit">
-
-	</form>
 
 	<div class="box" id="leftbox">  
 	<h1>Calendar</h1>
 	<h3>1. year</h3>
 	<h5>1. semester</h5> <h5>2. semester</h5>
+	<button class="CHECK" id="clear" onclick="parent.location='course-selection'"><img src="{% static 'refresh.png' %}" alt="refresh logo" id="refresh"></button>
 	<div class="year-container">
 		<div class="semester" id="s1">{% for course in courses %}{% for semester, id_list in semesters.items %}{% if course.id in id_list and semester == "1" %}<div class="course {{course.id}}" draggable="true"> <p>{{ course.name }} ({{course.course_code}}) - {{ course.ects }} ECTS - {{ course.semester_type }}</p><button class="infoButton_open" onclick='openInfo("{{course.id}}")'>i</button><div class="infoPopup" id="{{course.id}}"><button class="infoButton_close" onclick='closeInfo("{{course.id}}")'>X</button><div class="destringify">{{course.description}}</div></div></div>{% endif %}{% endfor %}{% endfor %}</div>
 		<div class="semester" id="s2">{% for course in courses %}{% for semester, id_list in semesters.items %}{% if course.id in id_list and semester == "2" %}<div class="course {{course.id}}" draggable="true"> <p>{{ course.name }} ({{course.course_code}}) - {{ course.ects }} ECTS - {{ course.semester_type }}</p><button class="infoButton_open" onclick='openInfo("{{course.id}}")'>i</button><div class="infoPopup" id="{{course.id}}"><button class="infoButton_close" onclick='closeInfo("{{course.id}}")'>X</button><div class="destringify">{{course.description}}</div></div></div>{% endif %}{% endfor %}{% endfor %}</div>

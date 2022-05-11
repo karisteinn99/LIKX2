@@ -1,17 +1,46 @@
-
+body {
+    background-color: rgb(79, 79, 93);
+}
 
 .form-input {
     display: none;
 }
 
+#refresh {
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    left: -0.1%;
+    top: -0.1%;
+}
+
+#clear {
+    border-radius: 50%;
+    position: absolute;
+    float: right;
+    right: 0.5%;
+    margin: 0 0 0 100px;
+}
+
+#clear:hover {
+    top: 10.2%;
+}
+
+#clear:active {
+    border: 2px solid cyan;
+}
+
 #save-image {
     position: relative;
-    width: 150%;
-    height: 102%;
-    left: -7.5px;
-    top: -2.5px;
+    width: 153%;
+    height: 105%;
+    left: -27.5%;
+    top: -4.5%;
     border-radius: 4px;
-    border: black solid 2px;
+    border: black solid 1px;
 }
 
 .CHECK#save-button {
@@ -19,11 +48,10 @@
 }
 
 #save-button:hover {
-    border: darkgreen solid 2px;
     width: 42px;
     height: 42px;
     right: 86.7%;
-    top: 7.7%;
+    top: 10%;
 }
 
 #save-button:active {
@@ -31,7 +59,7 @@
     width: 42px;
     height: 42px;
     right: 86.7%;
-    top: 7.7%;
+    top: 10%;
 }
 
 .CHECK#check-button {
@@ -40,7 +68,7 @@
     right: 75%;
     background-color: rgb(191, 29, 29);
     text-align: center;
-    text-indent: -4.7px;
+    justify-content: center;
     border: solid black 2px;
     font-size: smaller;
 }
@@ -49,14 +77,14 @@
     width: 42px;
     height: 42px;
     right: 74.7%;
-    top: 7.7%;
+    top: 10%;
 }
 
 #check-button:active {
     width: 42px;
     height: 42px;
     right: 74.7%;
-    top: 7.7%;
+    top: 10%;
     background-color: rgb(255, 0, 0);
     color: rgb(255, 233, 191);
 }
@@ -68,9 +96,8 @@
     font: bold large;
     border-radius: 5px;
     right: 470px;
-    top: 100px;
+    top: 10.5%;
     display: flex;
-    top: 8%;
     float: right;
 }
 
@@ -118,7 +145,7 @@
 .navbar {
     position: relative;
     width: auto;
-    height: 60px;
+    height: 50px;
     background-image: url('red_image.jpg');
     border: 1px rgb(255, 13, 0);
     border-style: ridge;
@@ -126,21 +153,27 @@
 
 .navbar a {
     display: inline-block;
-    height: 60px;
+    float: left;
+    height: 50px;
     font-size: larger;
     font-weight: bold;
     border-right: 1px solid black;
-    border-left: 1px solid black;
     padding: 0 15px;
-    right: 0;
-    line-height: 55px;
+    margin: 0;
+    line-height: 50px;
     color: black;
     text-decoration: wavy;
+    border-radius: 8px;
 }
 
 .navbar a:hover {
-    background-color: grey;
+    background-color: rgb(171, 3, 3);
     border-radius: 8px;
+}
+
+#logout {
+    float: right;
+    border-left: 1px solid black;
 }
 
 body,html {
@@ -175,7 +208,7 @@ h3 {
     text-align: left;
     margin: 0;
     margin-left: 10px;
-    width: 90%;
+    width: 93%;
     padding-bottom: 1px;
     border-bottom: 1px solid black;
 }
@@ -236,8 +269,8 @@ h5  {
     position: relative;
     display: flex;
     width: auto;
-    height: 77%;
-    margin: 47px 1%;
+    height: 80%;
+    margin: 67px 1%;
     border: 3px solid black;
     border-radius: 2px;
     display: block;
