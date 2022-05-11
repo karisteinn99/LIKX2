@@ -115,11 +115,14 @@ body {
 }
 
 .infoButton_open {
+    margin: 0.05%;
     height: auto;
     width: 10%;
     font-weight: bolder;
     font-family: 'Times New Roman', Times, serif;
     background-color: brown;
+    border: solid black 2px;
+    border-radius: 2px;
 }
 
 .infoButton_close {
@@ -196,10 +199,11 @@ body,html {
     width: auto;
     text-align: left;
     margin: 1%;
-    border: black solid 1px;
+    border: black solid 1.5px;
+    border-style: groove;
     border-radius: 2px;
     cursor: move;
-    background-image: linear-gradient(to right, rgb(223, 2, 2), rgb(190, 117, 0), rgb(215, 151, 54));
+    background-color: rgb(238, 155, 0);
 }
 
 .coursebutton.dragging {
