@@ -37,12 +37,18 @@ def count_ects(objects):
         count += course.ects
     return count
 
-
+def check_ects_per_semester(selected_courses_by_semester):
+    print("inní check_ects_per_semester")
+    ret_list =[]
+    for semester in selected_courses_by_semester.items():
+        semester_count = count_ects(selected_courses_by_semester[semester])
+        if semester_count > 36:
+            ret_list.append("Too many ECTS on semester {}".format(semester))
+    return ret_list
 
 def change_dictionary(dict):
     old_object = Course.objects.none()
     ret_dict = {}
-    #dict.pop('csrfmiddlewaretoken')
     counter = 1
     for semester,courses in dict.items():
         if semester == 'csrfmiddlewaretoken':
@@ -53,7 +59,6 @@ def change_dictionary(dict):
                     course_object = Course.objects.filter(id = course_id)
                     new_queryset = course_object | old_object
                     old_object = new_queryset
-                    #object_list.append(course_object)
                 ret_dict[counter] =  new_queryset
                 counter += 1
                 old_object = Course.objects.none()
@@ -83,33 +88,29 @@ def check_prerequisite_by_semester(selected_courses_by_semester):
 
             else:
                 ret_str = ""
-                is_okay = True
                 false_list = []
                 for prereq in prereq_list:
+                    found_counter = 0
                     course_object = CourseHasPrerequisite.objects.get(course_id_id = course.id, prereq_id_id = prereq.id)
                     if course_object.parallel_enrollment == 0:
                         for counter in range(semester-1,0,-1):
-                            print("ekki parallel - counter: {}, semester: {}, course: {}, prereq: {}".format(counter, semester, course, prereq))
-                            if prereq not in selected_courses_by_semester[counter]:
-                                is_okay = False
-                        if not is_okay:
+                            if prereq in selected_courses_by_semester[counter]:
+                                found_counter += 1
+                        if found_counter == 0:
                             false_list.append(prereq)
                     else:
                         for counter in range(semester,0,-1):
-                            print("parallel - counter: {}, semester: {}, course: {}, prereq: {}".format(counter, semester, course, prereq))
-                            if prereq not in selected_courses_by_semester[counter]:
-                                is_okay = False
-                        if not is_okay:   
+                            if prereq in selected_courses_by_semester[counter]:
+                                found_counter += 1
+                        if found_counter == 0:   
                             false_list.append(prereq)
                     
                 if len(false_list) != 0:
                     ret_str += ("Course {} needs prerequisite/s:".format(course))
                     for prerequisite in false_list:
-                        ret_str += "{}".format(prerequisite)
+                        ret_str += "{} ".format(prerequisite)
                     ret_list.append(ret_str)
     return ret_list
-
-
 
 
 
@@ -135,7 +136,6 @@ def check_course_types(selected_courses_by_semester): # grf dict = {önn1:querys
             ret_list.append("Too many 3V courses on semester {}".format(semester))
         if type_dict["12V"] > 5:
             ret_list.append("Too many 12V courses on semester {}".format(semester))
-        #print(ret_list)
     return ret_list
 
 def count_course_types(queryset):
@@ -149,5 +149,4 @@ def count_course_types(queryset):
             count_12 += 1
     ret_dict["3V"] = count_3
     ret_dict["12V"] = count_12
-    #print(ret_dict)
     return ret_dict
