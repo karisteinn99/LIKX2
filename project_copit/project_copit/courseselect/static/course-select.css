@@ -225,6 +225,16 @@ h3 {
     border-bottom: 1px solid black;
 }
 
+h4 {
+    font-size: larger;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid black;
+    width: 90%;
+    font-weight: bold;
+    margin: 2% 5%;
+}
 h5  {
     justify-content: center;
     width: 85%;
@@ -335,7 +345,7 @@ h5  {
 
   .check-box {
       margin: 1%;
-      border: 1px solid red;
+      border: 2px solid red;
       border-radius: 2px;
       border-style: groove;
   }

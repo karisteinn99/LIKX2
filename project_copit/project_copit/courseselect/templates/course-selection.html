@@ -77,7 +77,7 @@
 		<div class="bigContainer">
 		
 		<div class="check-box" id="errors">
-		<h3>CALENDAR RESTRICTIONS</h3>
+		<h4>CALENDAR RESTRICTIONS</h4>
 		{% for requirement, result in other_requirements.items %}
 			<div class="head-title"> {{ requirement }} </div> 
 			{% for res in result %}
@@ -87,7 +87,7 @@
 		</div>
 
 		<div class="check-box" id="yellow">
-			<h3>EDUCATIONAL REQUIREMENTS</h3>
+			<h4>EDUCATIONAL REQUIREMENTS</h4>
 			{% for head_requirement, sub_requirements in head_requirements.items %} 
 				<div class="head-title"> {{ head_requirement.title }} </div> 
 				<br>
@@ -95,6 +95,7 @@
 					<div class="result">{{ sub_requirement.label_id }}: <div class="float-right">{{ result }}</div></div>
 				{% endfor %} 
 			{% endfor %}
+			<br>
 			</div>
 		</div>
 	</div>	

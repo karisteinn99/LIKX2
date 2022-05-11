@@ -99,7 +99,8 @@ function form_function() {
 }
 
 error_count = document.getElementById('errors').childElementCount
-if (error_count <= 4) {
+console.log(error_count)
+if (error_count <= 5) {
   errors = document.getElementById('errors')
   errors.innerHTML = 'No errors'
   errors.setAttribute('class', 'check-box green')
