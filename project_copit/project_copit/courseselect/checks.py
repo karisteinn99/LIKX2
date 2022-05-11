@@ -83,23 +83,29 @@ def check_prerequisite_by_semester(selected_courses_by_semester):
 
             else:
                 ret_str = ""
-                is_okay = True
                 false_list = []
                 for prereq in prereq_list:
+                    found_counter = 0
                     course_object = CourseHasPrerequisite.objects.get(course_id_id = course.id, prereq_id_id = prereq.id)
                     if course_object.parallel_enrollment == 0:
                         for counter in range(semester-1,0,-1):
                             print("ekki parallel - counter: {}, semester: {}, course: {}, prereq: {}".format(counter, semester, course, prereq))
                             if prereq not in selected_courses_by_semester[counter]:
-                                is_okay = False
-                        if not is_okay:
+                                print("{} finnst ekki á önn {}".format(prereq, counter))
+                            else:
+                                found_counter += 1
+                                print("{} fannst á önn {}".format(prereq, counter))
+                        if found_counter == 0:
                             false_list.append(prereq)
                     else:
                         for counter in range(semester,0,-1):
                             print("parallel - counter: {}, semester: {}, course: {}, prereq: {}".format(counter, semester, course, prereq))
                             if prereq not in selected_courses_by_semester[counter]:
-                                is_okay = False
-                        if not is_okay:   
+                                print("{} finnst ekki á önn {}".format(prereq, counter))
+                            else:
+                                found_counter += 1
+                                print("{} fannst á önn {}".format(prereq, counter))
+                        if found_counter == 0:   
                             false_list.append(prereq)
                     
                 if len(false_list) != 0:
