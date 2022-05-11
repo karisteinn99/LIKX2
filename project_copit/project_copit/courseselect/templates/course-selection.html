@@ -73,22 +73,24 @@
 			<input class="form-input" id="semester-6" type="text" name="6">
 			<input class="CHECK" id="check-button" type="submit" value="check">
 		</form>
+
 		<div class="bigContainer">
-			
-		Checking requirements
-		<br>
-		<br>{% for head_requirement,sub_requirements in head_requirements.items %} 
-		<br>{{ head_requirement.title }}:
-		<br>{% for sub_requirement,result in sub_requirements.items %}
-		<br>{{ sub_requirement.label_id }}: {{ result }}{% endfor %} 
+		
+		{% for head_requirement,sub_requirements in head_requirements.items %} 
+			<div class="head-title"> {{ head_requirement.title }} </div> 
+			<br>
+			{% for sub_requirement,result in sub_requirements.items %}
+				<div class="result">{{ sub_requirement.label_id }}: <div class="float-right">{{ result }}</div></div>
+			{% endfor %} 
 		{% endfor %}
-		<br>
-		<br>{% for requirement,result in other_requirements.items %}
-		<br>{% for res in result %}
-		<br>{{ res }}
+
+		{% for requirement,result in other_requirements.items %}
+		{% for res in result %}
+			<div class="result">{{ res }}</div>
 		{% endfor %}
 		{% endfor %}
 		</div>
 	</div>	
+	<!-- <div class="navbar" id="bottom"></div> -->
 </body>
 </html>

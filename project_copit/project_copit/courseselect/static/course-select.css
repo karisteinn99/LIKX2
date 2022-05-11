@@ -1,5 +1,6 @@
 body {
     background-color: rgb(79, 79, 93);
+    padding-bottom: 50px;
 }
 
 .form-input {
@@ -37,8 +38,8 @@ body {
     position: relative;
     width: 153%;
     height: 105%;
-    left: -27.5%;
-    top: -4.5%;
+    left: -27.8%;
+    top: -4.8%;
     border-radius: 4px;
     border: black solid 1px;
 }
@@ -141,14 +142,20 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-
 .navbar {
     position: relative;
     width: auto;
     height: 50px;
     background-image: url('red_image.jpg');
-    border: 1px rgb(255, 13, 0);
+    border: 0.5px rgb(255, 13, 0);
     border-style: ridge;
+}
+
+.navbar#bottom {
+    position: absolute;
+    width: 100%;
+    left: 0; right: 0; bottom: 0;
+    height: 50px;
 }
 
 .navbar a {
@@ -270,7 +277,7 @@ h5  {
     display: flex;
     width: auto;
     height: 80%;
-    margin: 67px 1%;
+    margin: 67.8px 1%;
     border: 3px solid black;
     border-radius: 2px;
     display: block;
@@ -294,4 +301,21 @@ h5  {
     margin: auto; 
     min-width: 50%;
     min-height: 50%;
+  }
+
+  .head-title {
+      text-align: center;
+      justify-content: center;
+      font-weight: bold;
+      border-bottom: 1px solid black;
+      width: 80%;
+      margin: 3% 10% 0 10%;
+  }
+
+  .result {
+      margin: 2%;
+  }
+
+  .float-right {
+      float: right;
   }
