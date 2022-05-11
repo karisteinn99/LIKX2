@@ -72,13 +72,13 @@ def check_prerequisite_by_semester(selected_courses_by_semester):
                 if len(prereq_list) == 0:
                     continue
                 else:
-                    ret_str = "Course {} cannot be a first course, has prerequisite/s:\n".format(course)
+                    ret_str = "Course {} cannot be a first course, has prerequisite/s: ".format(course)
                     for prereq in prereq_list:
                         course_object = CourseHasPrerequisite.objects.get(course_id_id = course.id, prereq_id_id = prereq.id)
                         if course_object.parallel_enrollment == 0:
                             ret_str += "{}\n".format(prereq)
                         else:
-                            ret_str += "{} (parallel enrollment allowed)\n".format(prereq)
+                            ret_str += "{} (parallel enrollment allowed) ".format(prereq)
                     ret_list.append(ret_str)
 
             else:
@@ -95,7 +95,7 @@ def check_prerequisite_by_semester(selected_courses_by_semester):
                         for counter in range(semester,1,-1):
                             if prereq not in selected_courses_by_semester[counter]:
                                 is_okay = False
-                                ret_str += "{} (parallel enrollment allowed)".format(prereq)
+                                ret_str += "{} (parallel enrollment allowed) ".format(prereq)
                 if not is_okay:
                     ret_list.append("Course {} needs prerequisite/s: {}".format(course, ret_str))
 
