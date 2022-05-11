@@ -48,7 +48,7 @@
 	</div>
 	<div class="box" id="middlebox">
 		<h1>Courses Available</h1>
-		<div class="bigContainer">
+		<div class="bigContainer" id="red-backround">
 			{% for course in courses %}
 			{% if course.id not in courses_in_calender %}
 				<div class="course {{course.id}}" draggable="true"> <p>{{ course.name }} ({{course.course_code}}) - {{ course.ects }} ECTS - {{ course.semester_type }}</p><button class="infoButton_open" onclick='openInfo("{{course.id}}")'>i</button> 
