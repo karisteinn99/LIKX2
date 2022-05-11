@@ -78,9 +78,11 @@
 		
 		<div class="check-box">
 		{% for requirement,result in other_requirements.items %}
-		{% for res in result %}
-			<div class="result">{{ res }}</div>
-		{% endfor %}
+			<div class="head-title"> {{ requirement }} </div> 
+			<br>
+			{% for res in result %}
+				<div class="result">{{ res }}</div>
+			{% endfor %}
 		{% endfor %}
 		</div>
 
