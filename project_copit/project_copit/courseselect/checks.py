@@ -75,7 +75,6 @@ def check_prerequisite_by_semester(selected_courses_by_semester):
     ret_list = []
     for semester in selected_courses_by_semester.keys():
         for course in selected_courses_by_semester[semester]:
-            is_okay = True
             prereq_list = course.get_prerequisite()
             if semester == 1:
                 if len(prereq_list) == 0:
@@ -89,7 +88,6 @@ def check_prerequisite_by_semester(selected_courses_by_semester):
                         else:
                             ret_str += "{} (parallel enrollment allowed) ".format(prereq)
                     ret_list.append(ret_str)
-
             else:
                 ret_str = ""
                 false_list = []
