@@ -89,9 +89,9 @@
 		<div class="check-box" id="yellow">
 			<button class="infoButton_open" id="ed-req" onclick="openInfo('educational-requirements')">?</button>
 				<div class="infoPopup" id="educational-requirements"><button class="infoButton_close" onclick="closeInfo('educational-requirements')">
-				{% for sub in label_dict %}
+				{% for sub, courses in label_dict.items %}
 				{{sub}}: 
-				{% for course in sub %}
+				{% for course in courses %}
 				{{course}}
 				{% endfor %}
 				{% endfor %}
