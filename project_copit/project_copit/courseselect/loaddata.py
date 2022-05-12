@@ -42,14 +42,9 @@ tmp_prereq_data=pd.read_csv('prerequisite_info.csv',sep=';')
 prereq_list=[]
 for row in tmp_prereq_data['id']:
     course_codeinn = tmp_prereq_data.loc[row-1]['CourseCode']
-    print(row)#
-    print(course_codeinn)#
     prereq_codeinn = tmp_prereq_data.loc[row-1]['Prerequisite']
-    print(prereq_codeinn)#
     course_object = Course.objects.filter(course_code = course_codeinn)[0]
-    print(course_object)#
     prereq_object = Course.objects.filter(course_code = prereq_codeinn)[0]
-    print(prereq_object)#
 
     undanfara_objectinn = CourseHasPrerequisite(course_id=course_object, prereq_id=prereq_object,parallel_enrollment=tmp_prereq_data.loc[row-1]['ParallelEnrollment'])
 

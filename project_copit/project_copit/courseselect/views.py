@@ -31,10 +31,7 @@ def course_selection(request):
     label_dict = {}
     for sub_requirement in sub_req_objects:
         label_dict[sub_requirement] = sub_requirement.get_courses_with_label()
-    print(label_dict)
-
     context = {'courses': course_objects, 'head_requirements': head_requirements_result_dict, 'other_requirements': other_requirements_result_dict, 'semesters': semester_dict_output, 'courses_in_calender': courses_in_calender, 'label_dict': label_dict}
-
     return render(request, 'course-selection.html', context)
 
 def loginPage(request):

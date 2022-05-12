@@ -16,21 +16,14 @@ def check_head_requirements(selection_dict):
     for object in all_selected_objects:
         selection_queryset = object | old_object
         old_object = selection_queryset
-    print("selection_queryset: {}".format(selection_queryset))
     for head_requirement in HeadRequirements.objects.all():
         result_dict[head_requirement] = {}
-        print("head_requirement: {}".format(head_requirement))
         for sub_requirement in SubRequirements.objects.all():
-            print("sub_requirement: {}".format(sub_requirement))
             if head_requirement.id == sub_requirement.head_req_id_id:
                 labeled_queryset = sub_requirement.get_courses_with_label() #returns Course objects með labelinu
-                print("labeled_queryset: {}".format(labeled_queryset))
                 labeled_id_list = labeled_queryset.values_list('id') #listi af idum i labeled queryset
-                #print("labeled id list: {}".format(labeled_id_list))
                 labeled_selection = selection_queryset.filter(pk__in = labeled_id_list) #filtera selectionið með labelinu skila Course objects
-                print("labeled_selection:{}".format(labeled_selection))
                 if sub_requirement.quantity == -1: #selectionið þarf að innihalda öll objects sem finnast með þessu labeli
-                    #print("labeled_selection.union: {}".format(labeled_selection.union(labeled_queryset)))
                     if count_ects(labeled_queryset) <= count_ects(labeled_selection):
                         result_dict[head_requirement][sub_requirement]="Fulfilled" 
                     else:
