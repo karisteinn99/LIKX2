@@ -47,7 +47,7 @@
 
 	</div>
 	<div class="box" id="middlebox">
-		<h1>Courses Available</h1>
+		<h1>Courses available</h1>
 		<div class="bigContainer">
 			{% for course in courses %}
 			{% if course.id not in courses_in_calender %}
@@ -63,6 +63,7 @@
 		<h1>Check</h1>
 		<button class="CHECK" id="save-button" onclick="form_function()"><img id="save-image" src="{% static 'save_icon.png' %}" alt="save button logo"></button>
 		<form class="form" action="course-selection-with-form" method="post">
+		<a href="{% url 'export-pdf' %}" class="CHECK">Export PDF</a>
 			{% csrf_token %}
 			{{form}}
 			<input class="form-input" id="semester-1" type="text" name="1">
@@ -87,16 +88,6 @@
 		</div>
 
 		<div class="check-box" id="yellow">
-			<button class="infoButton_open" id="ed-req" onclick="openInfo('educational-requirements')">?</button>
-				<div class="infoPopup" id="educational-requirements"><button class="infoButton_close" onclick="closeInfo('educational-requirements')">X</button>
-				<h4 class="list-of-title">List of courses for each educational requirement</h4>
-				{% for sub, courses in label_dict.items %}
-					<h6>{{sub}}</h6> 
-					{% for course in courses %}
-					<div>{{course}}</div>
-				{% endfor %}
-				{% endfor %}
-				</div>
 			<h4>EDUCATIONAL REQUIREMENTS</h4>
 			{% for head_requirement, sub_requirements in head_requirements.items %} 
 				<div class="head-title"> {{ head_requirement.title }} </div> 
