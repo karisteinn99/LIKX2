@@ -99,15 +99,11 @@ function form_function() {
 }
 
 error_count = document.getElementById('errors').childElementCount
-console.log(error_count)
 if (error_count <= 5) {
   errors = document.getElementById('errors')
   errors.innerHTML = 'No errors'
   errors.setAttribute('class', 'check-box green')
 }
-
-console.error(errors)
-
 
 
 
