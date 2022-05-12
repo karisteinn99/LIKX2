@@ -16,7 +16,7 @@ Including another URLconf
 from typing import Any
 from django.contrib import admin
 from django.urls import path, include
-from courseselect.views import homepage, course_selection, big_check
+from courseselect.views import homepage, course_selection, big_check, export_pdf
 from courseselect.models import Course
 from courseselect.checks import count_ects
 
@@ -28,5 +28,5 @@ urlpatterns = [
     path('course-selection-check', big_check),
     path('course-selection', Course.get_prerequisite),
     path('course-selection', count_ects),
-    path('course-selection-with-form', course_selection)
+    path('course-selection-with-form', course_selection),
 ]

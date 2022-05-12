@@ -63,7 +63,6 @@
 		<h1>Check</h1>
 		<button class="CHECK" id="save-button" onclick="form_function()"><img id="save-image" src="{% static 'save_icon.png' %}" alt="save button logo"></button>
 		<form class="form" action="course-selection-with-form" method="post">
-		<a href="{% url 'export-pdf' %}" class="CHECK">Export PDF</a>
 			{% csrf_token %}
 			{{form}}
 			<input class="form-input" id="semester-1" type="text" name="1">
