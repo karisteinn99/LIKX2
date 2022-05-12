@@ -129,6 +129,7 @@ body {
 .infoButton_close {
     position: absolute;
     right: 0;
+    top: 0;
     border-radius: 4px;
 }
 .infoButton_close:hover {
@@ -241,6 +242,16 @@ h5  {
     margin: 0 17% 0 18%;
     display: inline;
 }
+
+h6 {
+    font-weight: bold;
+    font-size: larger;
+    width: 90%;
+    margin: 2% 0;
+    padding: 0;
+    border-bottom: 0.5px solid black;
+}
+
 .box {
     position: relative;
     height: 800px;
@@ -377,6 +388,13 @@ h5  {
 
 #educational-requirements {
     position: fixed;
-    right: 30%; 
+    right: 30%;
+    padding: 0.7%; 
+}
+
+.list-of-title {
+    font-size: x-large;
+    padding-bottom: 1%;
+    margin-bottom: 4%;
 }
 
