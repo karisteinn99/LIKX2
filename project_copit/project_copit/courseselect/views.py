@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from courseselect.checks import check_head_requirements, change_dictionary, check_prerequisite_by_semester, check_correct_semester, check_course_types, check_ects_per_semester
-from .models import Course, SubRequirements
+from .models import Course, SubRequirements, Label
 
 # form test og course selection smiðað saman
 def course_selection(request):
@@ -27,10 +27,10 @@ def course_selection(request):
     head_requirements_result_dict, other_requirements_result_dict = big_check(semester_dict)
     course_objects = Course.objects.all()
 
-    sub_req_objects = SubRequirements.objects.all()
+    label_objects = Label.objects.all()
     label_dict = {}
-    for sub_requirement in sub_req_objects:
-        label_dict[sub_requirement] = sub_requirement.get_courses_with_label()
+    for label in label_objects:
+        label_dict[label] = label.get_courses_with_label()
     context = {'courses': course_objects, 'head_requirements': head_requirements_result_dict, 'other_requirements': other_requirements_result_dict, 'semesters': semester_dict_output, 'courses_in_calender': courses_in_calender, 'label_dict': label_dict}
     return render(request, 'course-selection.html', context)
 
