@@ -30,7 +30,7 @@ def course_selection(request):
     label_objects = Label.objects.all()
     label_dict = {}
     for label in label_objects:
-        label_dict[label] = label.get_courses_with_label()
+        label_dict[label] = label.get_courses_with_label
     context = {'courses': course_objects, 'head_requirements': head_requirements_result_dict, 'other_requirements': other_requirements_result_dict, 'semesters': semester_dict_output, 'courses_in_calender': courses_in_calender, 'label_dict': label_dict}
     return render(request, 'course-selection.html', context)
 
