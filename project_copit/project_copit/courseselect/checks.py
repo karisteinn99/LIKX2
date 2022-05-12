@@ -10,7 +10,6 @@ def check_head_requirements(selection_dict):
         then compare ects or objects
         Returns dictionary with results for every headreq and subreq{headreqid:{subreqid:True/False,subreqid:True/False},headreqid:{...}}'''
     result_dict = {}
-    print("selection_objects.values(): {}".format(selection_dict.values()))
     all_selected_objects = selection_dict.values()
     old_object = Course.objects.none()
     selection_queryset = Course.objects.none()
