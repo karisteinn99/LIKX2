@@ -40,6 +40,11 @@ def loginPage(request):
 def homepage(request):
     return render(request, 'homepage.html')
 
+def course_open(request):
+    course_objects = Course.objects.all()
+    context = {'courses': course_objects}
+    return render(request, 'course-selection.html', context)
+
 
 def big_check(selected_objects_by_semester):
     other_requirements_result_dict = {}
