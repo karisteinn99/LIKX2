@@ -19,7 +19,7 @@ class Course(models.Model):
         all_objects = CourseHasPrerequisite.objects.filter(course_id=self.id)
         prereq_list = []
         for obj in all_objects.values():
-            prereq_list.append(Course.objects.filter(id=obj['prereq_id_id']))
+            prereq_list.append(Course.objects.filter(id=obj['prereq_id_id'])[0])
         return prereq_list
     
     def get_semester(self):
