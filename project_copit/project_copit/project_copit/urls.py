@@ -16,7 +16,7 @@ Including another URLconf
 from typing import Any
 from django.contrib import admin
 from django.urls import path, include
-from courseselect.views import homepage, course_selection, big_check, export_pdf
+from courseselect.views import homepage, course_selection, big_check
 from courseselect.models import Course
 from courseselect.checks import count_ects
 
