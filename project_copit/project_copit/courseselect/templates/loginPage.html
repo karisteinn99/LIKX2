@@ -15,8 +15,15 @@
     <div class="login-container">
         <div id="login-text">Login</div>
         <img class="hr-logo" src="{% static 'hr-logo.png' %}" alt="hr-logo">
-        <input class="login-text-input" type="text" name="username" id="username" value="username">
-        <input class="login-text-input" id="password" type="text" name="username" id="username" value="password">
+        <div>
+            <label for="username" class="label username">Username:</label>
+            <input class="login-text-input" type="text" name="username" id="username">
+        </div>
+        <div>
+            <label for="password" class="label password">Password:</label>
+            <input class="login-text-input" id="password" type="password" name="username" id="username">
+        </div>
+
         <button class="login-button" id="login-student" onclick="parent.location='course-selection'" > LOGIN AS STUDENT </button> <button class="login-button" id="login-teacher"> LOGIN AS TEACHER </button>
         <div class="forgot-password">Forgot password? <a id="click-here" href="https://www.beaumont.org/treatments/alzheimers-disease-rehabilitation">Click here</a></div>
         <button class="sign-up">Sign Up</button>

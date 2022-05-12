@@ -35,7 +35,6 @@
     justify-content: center;
     text-align: left;
     font-size: 260%;
-    font-weight: bold;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin: 7% 4% 4% 4%;
 }
@@ -61,13 +60,13 @@
     top: 115px;
     left: 18px;
     text-indent: 2%;
-    color: rgb(200, 200, 200);
     border: black solid 1px;
     border-radius: 2px;
 }
 
 #password {
-    top: 165px;
+    top: 178px;
+    margin-bottom: 2%;
 }
 
 .login-button {
@@ -75,7 +74,7 @@
     justify-content: center;
     background-color: red;
     border: solid darkred 1px;
-    top: 225px;
+    top: 230px;
     width: 42%;
     height: 30px;
     color: aliceblue;
@@ -110,7 +109,7 @@
     color: white;
     position: absolute;
     width: auto;
-    top: 260px;
+    top: 265px;
     left: 16%;
     right: 20%;
     text-align: center;
@@ -129,4 +128,23 @@
     border-radius: 7px;
     box-shadow: 1px 1.5px rgb(51, 50, 50);
 
+}
+
+label {
+    display: block;
+    font: .9rem 'Fira Sans', sans-serif;
+}
+
+input[type='submit'],
+
+label {
+    margin-top: 1rem;
+}
+
+.label {
+    margin: 23% 0 5% 4.5%;
+}
+
+.label.password {
+    margin-top: 11%;
 }
