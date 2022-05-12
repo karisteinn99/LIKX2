@@ -375,3 +375,8 @@ h5  {
       border-radius: 2px;
   }
 
+#educational-requirements {
+    position: fixed;
+    right: 30%; 
+}
+
