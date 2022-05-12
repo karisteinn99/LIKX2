@@ -67,6 +67,11 @@ class HeadRequirements(models.Model):
 class Label(models.Model):
     label_name = models.CharField(max_length=255)   
 
+    def get_courses_label(self):
+        course_has_label_objects = CourseHasLabel.objects.all().filter(label_id_id = self.id)
+        course_objects = Course.objects.all().filter(pk__in = course_has_label_objects.values_list('course_id_id'))
+        return course_objects 
+
     def __str__(self):
         return self.label_name
 
