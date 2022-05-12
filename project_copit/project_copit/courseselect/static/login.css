@@ -142,9 +142,11 @@ label {
 }
 
 .label {
-    margin: 23% 0 5% 4.5%;
+    position: absolute;
+    left: 19px;
+    top: 83.5px;
 }
 
 .label.password {
-    margin-top: 11%;
+    top: 145px;
 }
