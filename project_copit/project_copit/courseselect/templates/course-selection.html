@@ -10,9 +10,9 @@
 	<title>course-selection</title>
 </head>
 <body>
-	<div id="bg">
+	<!-- <div id="bg">
         <img src="{% static 'white_paper.jpg' %}" alt="backround_image">
-    </div>
+    </div> -->
 
 	<div class="navbar"> 
 		<a href=".." id="logout">LOG OUT</a>
@@ -48,7 +48,7 @@
 	</div>
 	<div class="box" id="middlebox">
 		<h1>Courses Available</h1>
-		<div class="bigContainer" id="red-backround">
+		<div class="bigContainer">
 			{% for course in courses %}
 			{% if course.id not in courses_in_calender %}
 				<div class="course {{course.id}}" draggable="true"> <p>{{ course.name }} ({{course.course_code}}) - {{ course.ects }} ECTS - {{ course.semester_type }}</p><button class="infoButton_open" onclick='openInfo("{{course.id}}")'>i</button> 
@@ -77,7 +77,7 @@
 		<div class="bigContainer">
 		
 		<div class="check-box" id="errors">
-		<h3>CALENDAR RESTRICTIONS</h3>
+		<h4>CALENDAR RESTRICTIONS</h4>
 		{% for requirement, result in other_requirements.items %}
 			<div class="head-title"> {{ requirement }} </div> 
 			{% for res in result %}
@@ -87,7 +87,7 @@
 		</div>
 
 		<div class="check-box" id="yellow">
-			<h3>EDUCATIONAL REQUIREMENTS</h3>
+			<h4>EDUCATIONAL REQUIREMENTS</h4>
 			{% for head_requirement, sub_requirements in head_requirements.items %} 
 				<div class="head-title"> {{ head_requirement.title }} </div> 
 				<br>
@@ -95,6 +95,7 @@
 					<div class="result">{{ sub_requirement.label_id }}: <div class="float-right">{{ result }}</div></div>
 				{% endfor %} 
 			{% endfor %}
+			<br>
 			</div>
 		</div>
 	</div>	
